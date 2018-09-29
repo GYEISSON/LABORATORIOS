@@ -5,8 +5,8 @@ import java.util.*;
 
 public class AutomataCelular{
 
-	static private int LONGITUD=20;
-	private Elemento[][] automata;
+   static private int LONGITUD=20;
+   private Elemento[][] automata;
 
 		
    public AutomataCelular() {
@@ -17,7 +17,7 @@ public class AutomataCelular{
 			}
 		}
 		algunosElementos();
-	}
+   }
     
    public int  getLongitud(){
    	return LONGITUD;
@@ -30,13 +30,18 @@ public class AutomataCelular{
    public void setElemento(int f, int c, Elemento nueva){
    	automata[f][c]=nueva;
    }
-
-	
+   
    public void algunosElementos(){
+       Celula x = new Celula(this,0,0);
+       automata[0][0]=x;
+       Celula y = new Celula(this,1,1);
+       automata[1][1]=y;
    }
     
-    
    public void ticTac(){
-    
+       automata[0][0].decida();
+       automata[0][0].cambie();
+       automata[1][1].decida();
+       automata[1][1].cambie();
    }
 }
