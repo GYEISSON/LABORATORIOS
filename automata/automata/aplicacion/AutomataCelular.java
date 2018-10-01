@@ -32,12 +32,14 @@ public class AutomataCelular{
    }
    
    public void algunosElementos(){
+       
        Celula x = new Celula(this,0,0);
        automata[0][0]=x;
        Celula y = new Celula(this,1,1);
        automata[1][1]=y;
        Barrera b = new Barrera(this,15,15);
        automata[15][15]=b;
+       
    }
     
    public void ticTac(){
