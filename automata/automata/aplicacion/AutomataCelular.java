@@ -36,12 +36,30 @@ public class AutomataCelular{
        automata[0][0]=x;
        Celula y = new Celula(this,1,1);
        automata[1][1]=y;
+       Barrera b = new Barrera(this,15,15);
+       automata[15][15]=b;
    }
     
-   public void ticTac(){
-       automata[0][0].decida();
-       automata[0][0].cambie();
-       automata[1][1].decida();
-       automata[1][1].cambie();
+    public void ticTac(){
+       for (int f=0;f<20;f++){
+           for (int c=0;c<20;c++){
+		    //System.out.println(automata[f][c].getClass().getName());
+		    // System.out.println(Integer.toString(f)+Integer.toString(c));
+	       if (automata[f][c]!= null){
+		      // System.out.println("hola");  
+		   automata[f][c].decida();
+		   automata[f][c].cambie();
+	       }
+		    
+	       else{ 
+		        // System.out.println("ADIOS");
+       	           continue;
+	       }
+	   }
+       }
+       // automata[0][0].decida();
+       // automata[0][0].cambie();
+       // automata[1][1].decida();
+       // automata[1][1].cambie();
    }
 }

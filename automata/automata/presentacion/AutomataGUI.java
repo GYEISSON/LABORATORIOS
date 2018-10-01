@@ -6,7 +6,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 
-public class AutomataGUI extends JFrame{	
+public class AutomataGUI extends JFrame{    
 
     private JButton botonReloj;
     private JLabel lFila;
@@ -76,7 +76,7 @@ class FotoAutomata extends JPanel{
     public FotoAutomata(AutomataCelular ac) {
         setBackground(Color.white);
         automata=ac;
-        setPreferredSize(new Dimension(800,800)); 		
+        setPreferredSize(new Dimension(800,800));       
 
     }
 
@@ -92,9 +92,10 @@ class FotoAutomata extends JPanel{
         }
         for (int c=0;c<=automata.getLongitud();c++){
             g.drawLine(0,c*TAMANO,automata.getLongitud()*TAMANO,c*TAMANO);
-        }		
+        }       
         for (int f=0;f<automata.getLongitud();f++){
             for(int c=0;c<automata.getLongitud();c++){
+                
                 if (automata.getElemento(f,c)!=null){
                     g.setColor(automata.getElemento(f,c).getColor());
                     if (! (automata.getElemento(f,c) instanceof Celula)){
@@ -103,7 +104,7 @@ class FotoAutomata extends JPanel{
                        g.fillRoundRect(TAMANO*c+3,TAMANO*f+3+18,16,16,5,5); 
                        g.fillRoundRect(TAMANO*c+3+18,TAMANO*f+3+18,16,16,5,5);                       
                        if (automata.getElemento(f,c).isVivo()){
-                        g.fillRoundRect(TAMANO*c+3,TAMANO*f+3,35,35,5,5);
+                           g.fillRoundRect(TAMANO*c+3,TAMANO*f+3,35,35,5,5);
                        }
                     }else {
                         if (automata.getElemento(f,c).isVivo()){

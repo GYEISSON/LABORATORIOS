@@ -20,7 +20,8 @@ public class Celula implements Elemento{
     private int edad;
 
 
-   /**Crea una célula, viva o latente, en la posición (<b>fila,columna</b>) del autómta <b>ac</b>.Toda nueva célula va a estar viva en el estado siguiente.
+   /**Crea una célula, viva o latente, en la posición (<b>fila,columna</b>) 
+    * del autómta <b>ac</b>.Toda nueva célula va a estar viva en el estado siguiente.
     @param ac automata celular en el que se va a ubicar la nueva célula
     @param fila fila en el automata celular
     @param columna columna en el automata celula
