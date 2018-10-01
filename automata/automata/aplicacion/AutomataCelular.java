@@ -37,8 +37,10 @@ public class AutomataCelular{
        automata[0][0]=x;
        Celula y = new Celula(this,1,1);
        automata[1][1]=y;
-       Barrera b = new Barrera(this,15,15);
-       automata[15][15]=b;
+       Barrera noreste = new Barrera(this,19,19);
+       automata[19][19]=noreste;
+       Barrera sureste = new Barrera(this,0,19);
+       automata[19][19]=sureste;
        
    }
     
