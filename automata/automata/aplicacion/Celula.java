@@ -24,7 +24,7 @@ public class Celula implements Elemento{
         estadoActual=' ';
         estadoSiguiente=VIVA;
         edad=0;
-        color=Color.black;
+
    }
    
    /**Crea una celula, viva o latente, en la posición (<b>fila,columna</b>) 
@@ -91,7 +91,7 @@ public class Celula implements Elemento{
     /**Decide cual va a ser su  siguiente estado 
     */
     public void decida(){
-        if (edad>=2){
+        if (edad>=2 ){
            estadoSiguiente=MUERTA;
        }   
     }
