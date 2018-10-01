@@ -8,27 +8,27 @@ public class AutomataCelular{
    static private int LONGITUD=20;
    private Elemento[][] automata;
 
-		
+        
    public AutomataCelular() {
-		automata=new Elemento[LONGITUD][LONGITUD];
-		for (int f=0;f<LONGITUD;f++){
-			for (int c=0;c<LONGITUD;c++){
-				automata[f][c]=null;
-			}
-		}
-		algunosElementos();
+        automata=new Elemento[LONGITUD][LONGITUD];
+        for (int f=0;f<LONGITUD;f++){
+            for (int c=0;c<LONGITUD;c++){
+                automata[f][c]=null;
+            }
+        }
+        algunosElementos();
    }
     
    public int  getLongitud(){
-   	return LONGITUD;
+    return LONGITUD;
    }
     
    public Elemento getElemento(int f,int c){
-    	return automata[f][c];
+        return automata[f][c];
    }
     
    public void setElemento(int f, int c, Elemento nueva){
-   	automata[f][c]=nueva;
+    automata[f][c]=nueva;
    }
    
    public void algunosElementos(){
@@ -40,26 +40,15 @@ public class AutomataCelular{
        automata[15][15]=b;
    }
     
-    public void ticTac(){
+   public void ticTac(){
        for (int f=0;f<20;f++){
            for (int c=0;c<20;c++){
-		    //System.out.println(automata[f][c].getClass().getName());
-		    // System.out.println(Integer.toString(f)+Integer.toString(c));
-	       if (automata[f][c]!= null){
-		      // System.out.println("hola");  
-		   automata[f][c].decida();
-		   automata[f][c].cambie();
-	       }
-		    
-	       else{ 
-		        // System.out.println("ADIOS");
-       	           continue;
-	       }
-	   }
+               if (automata[f][c]!= null){
+                   automata[f][c].decida();
+                   automata[f][c].cambie();
+               }            
+               else continue;
+           }
        }
-       // automata[0][0].decida();
-       // automata[0][0].cambie();
-       // automata[1][1].decida();
-       // automata[1][1].cambie();
    }
 }
