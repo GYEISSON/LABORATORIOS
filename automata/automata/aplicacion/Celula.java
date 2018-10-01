@@ -12,21 +12,28 @@ Los posibles estados de una célula son tres: viva, muerta o latente<br>
 public class Celula implements Elemento{
 
 
-    private final static char VIVA='v', MUERTA='m';
-    private AutomataCelular automata;
-    private int fila,columna;
-    protected char estadoActual,estadoSiguiente;
-    protected Color color;
-    private int edad;
+   protected final static char VIVA='v', MUERTA='m';
+   protected AutomataCelular automata;
+   protected int fila,columna;
+   protected char estadoActual,estadoSiguiente;
+   protected Color color;
+   protected int edad;
 
-
-   /**Crea una célula, viva o latente, en la posición (<b>fila,columna</b>) 
+    
+   protected Celula(){
+        estadoActual=' ';
+        estadoSiguiente=VIVA;
+        edad=0;
+        color=Color.black;
+   }
+   
+   /**Crea una celula, viva o latente, en la posición (<b>fila,columna</b>) 
     * del autómta <b>ac</b>.Toda nueva célula va a estar viva en el estado siguiente.
     @param ac automata celular en el que se va a ubicar la nueva célula
     @param fila fila en el automata celular
     @param columna columna en el automata celula
     */
-    public Celula(AutomataCelular ac,int fila, int columna){
+   public Celula(AutomataCelular ac,int fila, int columna){
         automata=ac;
         this.fila=fila;
         this.columna=columna;
@@ -34,14 +41,21 @@ public class Celula implements Elemento{
         estadoSiguiente=VIVA;
         edad=0;
         automata.setElemento(fila,columna,(Elemento)this);  
-        color=Color.black;
-    }
+        
+   }
+   
 
+   
+   public void setCelula(AutomataCelular ac,int fila, int columna){
+        automata=ac;
+        this.fila=fila;
+        this.columna=columna;
+        automata.setElemento(fila,columna,(Elemento)this);
+   }
     
    /**Retorna la fila del automata en que se encuentra 
    @return 
    */
-
    public final int getFila(){
        return fila;
    }
