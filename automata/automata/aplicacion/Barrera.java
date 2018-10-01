@@ -22,8 +22,8 @@ public class Barrera implements Elemento{
     /**Retorna el color de  la célula
     @return 
     */
-    public final Color getColor(){
-        return color;
+    public final Color getColor(){        
+        return color;        
     }
    /**Actualiza su estado actual considerando lo definido como siguiente estado
     */

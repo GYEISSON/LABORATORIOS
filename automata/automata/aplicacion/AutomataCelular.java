@@ -1,6 +1,7 @@
 package aplicacion;
 
 import java.util.*;
+import java.*;
 
 
 public class AutomataCelular{
@@ -33,44 +34,64 @@ public class AutomataCelular{
    
    public void algunosElementos(){
        //celulas
-       Celula x = new Celula(this,0,0);
-       automata[0][0]=x;
-       Celula y = new Celula(this,1,1);
-       automata[1][1]=y;
+       
+              
+       Izquierdosa otra = new Izquierdosa(this,5,5);
+       automata[5][5]=otra;
+       Izquierdosa celula = new Izquierdosa(this,5,6);
+       automata[5][6]=celula;
+       
+       Celula x = new Celula(this,1,1);
+       automata[1][1]=x;
+       
+       
+       Celula y = new Celula(this,2,2);
+       automata[2][2]=y;
+       
+
+       
        //barreras
        Barrera noreste = new Barrera(this,19,19);
        automata[19][19]=noreste;
        Barrera sureste = new Barrera(this,0,19);
        automata[19][19]=sureste;
+
        //celulas izquierdosas
-       
-       Celula otra = new Izquierdosa(this,5,5);
-       automata[0][0]=otra;
-       Celula celula = new Izquierdosa(this,5,6);
-       automata[1][1]=celula;
+
        
    }
     
    public void ticTac(){
-       for (int f=0;f<20;f++){
-           for (int c=0;c<20;c++){
+       for (int f=0;f<19;f++){
+           for (int c=0;c<19;c++){
+               
                if (automata[f][c]!= null){
+                   System.out.println(f);System.out.println(c);
+                   System.out.println(automata[f][c].getClass().getName());
+                   
+                   if(c<18 && automata[f][c+1] != null){
+                       
+                       if(automata[f][c+1].isVivo() ){
+                           System.out.println(f+" "+c);
+                           System.out.println(c);
+                           System.out.println(f);
+                           automata[f][c].decida();
+                           automata[f][c].decida();  
+                       
+                                              automata[f][c].decida();
+                   automata[f][c].cambie();
+                                      automata[f][c].decida();
+                   automata[f][c].cambie();
+                       }
+                   }
+               
                    automata[f][c].decida();
                    automata[f][c].cambie();
+                   
                }            
                else continue;
            }
        }
-   }
-   
-   public int vecinasVivas(int xPos, int yPos){
-       int numeroVecinosVivos = 0;
-       int[] row = {0,-1,-1,-1,0,1,1,  1};
-       int[] col = {-1,-1,0, 1, 1, 1, 0,-1};
-       for(int i =0 ; i< 8;i++){
-          if(automata[row[i]][col[i]].isVivo()) numeroVecinosVivos++;
-       }
-       return numeroVecinosVivos;
    }
    
 }

@@ -1,27 +1,97 @@
 package aplicacion;
+
 import java.awt.Color;
+
 /**
  * Write a description of class Izquierdosa here.
  *
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Izquierdosa extends Celula
+public class Izquierdosa implements Elemento
 {
 
-    /**
-     * Constructor for objects of class Izquierdosa
-     */
-    public Izquierdosa(AutomataCelular ac,int fila, int columna)
-    {
-        setCelula(ac,fila,columna);
-        this.color  = Color.red;
-    }   
     
-    public void decidaIzq(){
-        decida();
-        if(automata.getElemento(fila,++columna).isVivo()){
-            estadoSiguiente = MUERTA;
-        }
+   protected final static char VIVA='v', MUERTA='m';
+   protected AutomataCelular automata;
+   protected int fila,columna;
+   protected char estadoActual,estadoSiguiente;
+   protected Color color;
+   public int edad;
+
+    
+
+   /**Crea una celula, viva o latente, en la posición (<b>fila,columna</b>) 
+    * del autómta <b>ac</b>.Toda nueva célula va a estar viva en el estado siguiente.
+    @param ac automata celular en el que se va a ubicar la nueva célula
+    @param fila fila en el automata celular
+    @param columna columna en el automata celula
+    */
+   public Izquierdosa(AutomataCelular ac,int fila, int columna){
+        automata=ac;
+        
+        this.fila=fila;
+        this.columna=columna;
+        estadoActual=' ';
+        estadoSiguiente=VIVA;
+        edad=0;
+        this.color = Color.red;
+        //automata.setElemento(fila,columna,(Elemento)this);  
+        
+   }   
+   /**Retorna la fila del automata en que se encuentra 
+   @return 
+   */
+   public final int getFila(){
+       return fila;
+   }
+
+   /**Retorna la columna del automata en que se encuentra
+   @return 
+   */
+   public final int getColumma(){
+       return columna;
+   }
+
+   /**Retorna el color de  la célula
+    @return 
+    */
+    public final Color getColor(){
+        return color;
     }
+
+    /**Retorna si está viva
+    @return v
+    */
+    public final boolean isVivo(){
+        return (estadoActual == VIVA) ;
+    }
+
+    /**Retorna la edad de la célula
+    @return 
+    */
+    public final int edad(){
+        return (edad) ;
+    }
+
+    /**Decide cual va a ser su  siguiente estado 
+    */
+    public void decida(){
+        if (edad>=2){
+           estadoSiguiente=MUERTA;
+       }   
+    }
+    public void toDeath(){
+        estadoSiguiente=MUERTA;
+    }
+
+    /**Actualiza su estado actual considerando lo definido como siguiente estado
+    */
+    public void cambie(){
+        edad++;
+        estadoActual=estadoSiguiente;
+    }
+
+
+    
 }

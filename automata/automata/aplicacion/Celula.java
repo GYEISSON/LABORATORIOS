@@ -17,15 +17,9 @@ public class Celula implements Elemento{
    protected int fila,columna;
    protected char estadoActual,estadoSiguiente;
    protected Color color;
-   protected int edad;
+   public int edad;
 
-    
-   protected Celula(){
-        estadoActual=' ';
-        estadoSiguiente=VIVA;
-        edad=0;
 
-   }
    
    /**Crea una celula, viva o latente, en la posición (<b>fila,columna</b>) 
     * del autómta <b>ac</b>.Toda nueva célula va a estar viva en el estado siguiente.
@@ -35,23 +29,19 @@ public class Celula implements Elemento{
     */
    public Celula(AutomataCelular ac,int fila, int columna){
         automata=ac;
+        
         this.fila=fila;
         this.columna=columna;
         estadoActual=' ';
         estadoSiguiente=VIVA;
         edad=0;
-        automata.setElemento(fila,columna,(Elemento)this);  
+        this.color = Color.black;
+        //automata.setElemento(fila,columna,(Elemento)this);  
         
    }
    
 
-   
-   public void setCelula(AutomataCelular ac,int fila, int columna){
-        automata=ac;
-        this.fila=fila;
-        this.columna=columna;
-        automata.setElemento(fila,columna,(Elemento)this);
-   }
+
     
    /**Retorna la fila del automata en que se encuentra 
    @return 
@@ -87,7 +77,7 @@ public class Celula implements Elemento{
     public final int edad(){
         return (edad) ;
     }
-    
+
     /**Decide cual va a ser su  siguiente estado 
     */
     public void decida(){
