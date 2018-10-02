@@ -97,10 +97,6 @@ class FotoAutomata extends JPanel{
                 
                 if (automata.getElemento(f,c)!=null){
                     g.setColor(automata.getElemento(f,c).getColor());
-                    System.out.println("ok");
-                    System.out.println(f);
-                    System.out.println(c);
-                    System.out.println("ok2");
                     if (! (automata.getElemento(f,c) instanceof Celula || automata.getElemento(f,c) instanceof Izquierdosa)){                       
                        g.setColor(Color.red);                       
                        g.fillRoundRect(TAMANO*c+3,TAMANO*f+3,16,16,5,5); 
@@ -113,8 +109,6 @@ class FotoAutomata extends JPanel{
                     }else {
                         if (automata.getElemento(f,c).isVivo()){
                             g.setColor(automata.getElemento(f,c).getColor());
-                            System.out.println(g.getColor()+" Color g");
-                            System.out.println(automata.getElemento(f,c).getColor()+ "" + automata.getElemento(f,c).getClass().getName());
                             g.fillOval(TAMANO*c+10,TAMANO*f+10,20,20);
                         } else {
                             g.setColor(automata.getElemento(f,c).getColor());

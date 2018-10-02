@@ -36,7 +36,7 @@ public class Izquierdosa implements Elemento
         estadoSiguiente=VIVA;
         edad=0;
         this.color = Color.red;
-        //automata.setElemento(fila,columna,(Elemento)this);  
+        automata.setElemento(fila,columna,(Elemento)this);  
         
    }   
    /**Retorna la fila del automata en que se encuentra 

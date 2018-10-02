@@ -36,7 +36,7 @@ public class Celula implements Elemento{
         estadoSiguiente=VIVA;
         edad=0;
         this.color = Color.black;
-        //automata.setElemento(fila,columna,(Elemento)this);  
+        automata.setElemento(fila,columna,(Elemento)this);  
         
    }
    

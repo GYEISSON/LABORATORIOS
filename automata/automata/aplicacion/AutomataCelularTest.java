@@ -21,7 +21,6 @@ public class AutomataCelularTest
     public AutomataCelularTest()
     {
         AutomataCelular at = new AutomataCelular();
-        
     }
 
     /**
@@ -29,18 +28,31 @@ public class AutomataCelularTest
      *
      * Called before every test case method.
      */
-    @Before
-    public void setUp()
+    @Test
+    public void deberiaHaberUnaCelula()
     {
+        AutomataCelular at = new AutomataCelular();
+        assertTrue("deberia haber celula",(at.getM()[1][1] instanceof Celula));
     }
-
-    /**
-     * Tears down the test fixture.
-     *
-     * Called after every test case method.
-     */
-    @After
-    public void tearDown()
-    {
+    
+    @Test
+    public void deberiaHacerTicTac(){
+        AutomataCelular at = new AutomataCelular();
+        at.ticTac();
+        assertTrue("deberia estar vivo",at.getElemento(1,1).isVivo()==true);
+        at.ticTac();
+        assertTrue("deberia estar vivo",(at.getElemento(1,1).isVivo()==true));
+        at.ticTac();
+        assertTrue("deberia estar muerto",at.getElemento(1,1).isVivo()==false);
+    }
+    @Test
+    public void noDeberianMorirBarreras(){
+        AutomataCelular at = new AutomataCelular();
+        at.ticTac();
+        assertTrue("deberia estar vivo",at.getElemento(19,19).isVivo()==true);
+        at.ticTac();
+        assertTrue("deberia estar vivo",(at.getElemento(19,19).isVivo()==true));
+        at.ticTac();
+        assertTrue("deberia estar vivo",at.getElemento(19,19).isVivo()==true);
     }
 }
