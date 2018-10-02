@@ -97,16 +97,24 @@ class FotoAutomata extends JPanel{
                 
                 if (automata.getElemento(f,c)!=null){
                     g.setColor(automata.getElemento(f,c).getColor());
-                    if (! (automata.getElemento(f,c) instanceof Celula || automata.getElemento(f,c) instanceof Izquierdosa)){                       
-                       g.setColor(Color.red);                       
+                    if (automata.getElemento(f,c) instanceof Barrera){                       
+                       g.setColor(automata.getElemento(f,c).getColor());  
+                       
                        g.fillRoundRect(TAMANO*c+3,TAMANO*f+3,16,16,5,5); 
                        g.fillRoundRect(TAMANO*c+3+18,TAMANO*f+3,16,16,5,5); 
                        g.fillRoundRect(TAMANO*c+3,TAMANO*f+3+18,16,16,5,5); 
-                       g.fillRoundRect(TAMANO*c+3+18,TAMANO*f+3+18,16,16,5,5);                       
+                       g.fillRoundRect(TAMANO*c+3+18,TAMANO*f+3+18,16,16,5,5); 
+                        
                        if (automata.getElemento(f,c).isVivo()){
                            g.fillRoundRect(TAMANO*c+3,TAMANO*f+3,35,35,5,5);
-                       }
-                    }else {
+                        }
+                    }
+                    else if(automata.getElemento(f,c) instanceof Manzana){
+                       g.setFont(new Font("Calibri",Font.PLAIN,40));
+                       g.drawString("",TAMANO*c+1,TAMANO*f+38);
+                    }
+                    
+                    else {
                         if (automata.getElemento(f,c).isVivo()){
                             g.setColor(automata.getElemento(f,c).getColor());
                             g.fillOval(TAMANO*c+10,TAMANO*f+10,20,20);
@@ -119,4 +127,5 @@ class FotoAutomata extends JPanel{
             }
         }
     }
+    
 }

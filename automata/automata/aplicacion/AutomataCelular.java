@@ -46,6 +46,7 @@ public class AutomataCelular{
        Izquierdosa otra = new Izquierdosa(this,5,5);
        Izquierdosa celula = new Izquierdosa(this,5,6);
        
+       Manzana m = new Manzana(this,0,0);
        
    }
     
