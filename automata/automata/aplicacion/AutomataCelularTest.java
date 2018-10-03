@@ -55,4 +55,10 @@ public class AutomataCelularTest
         at.ticTac();
         assertTrue("deberia estar vivo",at.getElemento(19,19).isVivo()==true);
     }
+    
+    // @Test
+    // public void celulasIzquierdosas(){
+        // AutomataCelular at = new AutomataCelular();
+        
+    // }
 }

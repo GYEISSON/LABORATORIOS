@@ -106,12 +106,13 @@ class FotoAutomata extends JPanel{
                        g.fillRoundRect(TAMANO*c+3+18,TAMANO*f+3+18,16,16,5,5); 
                         
                        if (automata.getElemento(f,c).isVivo()){
-                           g.fillRoundRect(TAMANO*c+3,TAMANO*f+3,35,35,5,5);
+                           g.fillRoundRect(TAMANO*c+6,TAMANO*f+3,35,35,5,5);
                         }
                     }
                     else if(automata.getElemento(f,c) instanceof Manzana){
-                       g.setFont(new Font("Calibri",Font.PLAIN,40));
-                       g.drawString("",TAMANO*c+1,TAMANO*f+38);
+                       g.setColor(automata.getElemento(f,c).getColor());  
+                       g.setFont(new Font("Baskerville Old Face",Font.PLAIN,40));
+                       g.drawString("",TAMANO*c+1,TAMANO*f+30);
                     }
                     
                     else {

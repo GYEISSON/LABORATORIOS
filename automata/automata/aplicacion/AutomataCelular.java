@@ -32,8 +32,9 @@ public class AutomataCelular{
    }
     
    public void setElemento(int f, int c, Elemento nueva){
-    automata[f][c]=nueva;
+       automata[f][c]=nueva;
    }
+   
    public void algunosElementos(){
        //barreras
        Barrera noreste = new Barrera(this,19,19);
@@ -45,35 +46,24 @@ public class AutomataCelular{
        //celulas izquierdosas
        Izquierdosa otra = new Izquierdosa(this,5,5);
        Izquierdosa celula = new Izquierdosa(this,5,6);
+       Izquierdosa otra1 = new Izquierdosa(this,5,7);
+       Izquierdosa celula1 = new Izquierdosa(this,5,8);
+       
+       Oxigenada ox1 = new Oxigenada(this,10,10);
+       Oxigenada ox2 = new Oxigenada(this,10,11);
+       
        
        Manzana m = new Manzana(this,0,0);
        
-   }
-    
+   }    
    public void ticTac(){
        for (int f=0;f<19;f++){
-           for (int c=0;c<19;c++){
-               
-               if (automata[f][c]!= null){
-                   
-                   if(c<18 && automata[f][c+1] != null){
-                       
-                       if(automata[f][c+1].isVivo() ){
-                           automata[f][c].decida();
-                           automata[f][c].decida();  
-                       
-                           automata[f][c].decida();
-                           automata[f][c].cambie();
-                           automata[f][c].decida();
-                           automata[f][c].cambie();
-                       }
-                   }
-               
+           for (int c=0;c<19;c++){               
+               if (automata[f][c]!= null){                                      
                    automata[f][c].decida();
                    automata[f][c].cambie();
-                   
                }            
-               else continue;
+              
            }
        }
    }
