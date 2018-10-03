@@ -37,28 +37,18 @@ public class Oxigenada extends  Celula {
        if (edad>=5 ){
            this.color = Color.orange;
            estadoSiguiente=MUERTA;
-       }   
-    }
-    
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public void cambie(int nVecinos)
-    {
-        int[] x = {0, -1, -1, -1, 0, 1, 1, 1};
-        int[] y = {-1,-1,  0,  1, 1, 1, 0, -1};
-        int contV = 0;
-        for(int i =0;i<8;i++){
+       }
+       int[] x = {0, -1, -1, -1, 0, 1, 1, 1};
+       int[] y = {-1,-1,  0,  1, 1, 1, 0, -1};
+       int contV = 0;
+       for(int i =0;i<8;i++){
             if( fila+x[i] >=0 && fila+x[i] <19  && columna+y[i]>=0 && columna+y[i]<19){
                 if(automata.getElemento( fila+x[i] ,columna+y[i] ) != null) contV++;
             }
-        }
-        if(contV==8){
+       }
+       if(contV==8){
             this.edad+=5;
             estadoSiguiente = MUERTA;
-        }
+       }
     }
 }

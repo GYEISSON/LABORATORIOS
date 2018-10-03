@@ -22,6 +22,5 @@ public class Izquierdosa extends Celula
                 estadoSiguiente = MUERTA;
             }
         }
-    }
-    
+    }    
 }
