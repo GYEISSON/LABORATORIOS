@@ -1,7 +1,7 @@
 package aplicacion;
 
 
-
+import java.awt.Color;
 import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
@@ -56,9 +56,33 @@ public class AutomataCelularTest
         assertTrue("deberia estar vivo",at.getElemento(19,19).isVivo()==true);
     }
     
-    // @Test
-    // public void celulasIzquierdosas(){
-        // AutomataCelular at = new AutomataCelular();
+    @Test
+    public void celulasIzquierdosas(){
+        AutomataCelular at = new AutomataCelular();
+        at.ticTac();
+        assertTrue("deberia ser de color roja",at.getElemento(5,6).getColor() == Color.red);
+        assertTrue("deberia estar muerta",at.getElemento(5,6).isVivo());
+        at.ticTac();
+        assertTrue("deberia ser de color roja",at.getElemento(5,6).getColor() == Color.red);
+        assertFalse("deberia estar muerta",at.getElemento(5,6).isVivo());
+    }
+    
+    @Test
+    public void celulasOxigenada(){
+        AutomataCelular at = new AutomataCelular();
+        at.ticTac();
+        assertTrue("deberia ser de color verde",at.getElemento(10,10).getColor() == Color.green);
+        assertTrue("deberia estar muerta",at.getElemento(10,10).isVivo());
+        at.ticTac();
+        assertTrue("deberia ser de color roja",at.getElemento(10,10).getColor() == Color.yellow);
+        assertTrue("deberia estar muerta",at.getElemento(10,10).isVivo());
+        at.ticTac();
+        at.ticTac();        
+        assertTrue("deberia ser de color roja",at.getElemento(10,10).getColor() == Color.cyan);
+        assertTrue("deberia estar muerta",at.getElemento(10,10).isVivo());
+        at.ticTac();
+        at.ticTac();
+        assertFalse("deberia estar muerta",at.getElemento(10,10).isVivo());
         
-    // }
+    }
 }
