@@ -1,6 +1,10 @@
 Class documentation
 <---- javadoc command: ---->
+<<<<<<< HEAD
 C:\Program Files (x86)\BlueJ\jdk\bin\javadoc.exe
+=======
+/private/var/folders/5j/j48wyqg939sffc816xx3pm5r0000gn/T/AppTranslocation/FAC55019-E684-42A7-8A76-96A1B2445372/d/BlueJ.app/Contents/JDK/Home/bin/javadoc
+>>>>>>> 966a0f3bbe16ae117e9f25e0b6941a8088745c4a
 -author
 -version
 -nodeprecated
@@ -13,13 +17,18 @@ C:\Program Files (x86)\BlueJ\jdk\bin\javadoc.exe
 -source
 1.8
 -classpath
+<<<<<<< HEAD
 C:\Program Files (x86)\BlueJ\lib\bluejcore.jar;C:\Program Files (x86)\BlueJ\lib\junit-4.11.jar;C:\Program Files (x86)\BlueJ\lib\hamcrest-core-1.3.jar;C:\Program Files (x86)\BlueJ\lib\lang-stride.jar;C:\Program Files (x86)\BlueJ\lib\userlib\pi4j-core.jar;C:\Program Files (x86)\BlueJ\lib\userlib\pi4j-device.jar;C:\Program Files (x86)\BlueJ\lib\userlib\pi4j-gpio-extension.jar;C:\Program Files (x86)\BlueJ\lib\userlib\pi4j-service.jar;G:\LABORATORIOS\automata\automata
+=======
+/private/var/folders/5j/j48wyqg939sffc816xx3pm5r0000gn/T/AppTranslocation/FAC55019-E684-42A7-8A76-96A1B2445372/d/BlueJ.app/Contents/Resources/Java/bluejcore.jar:/private/var/folders/5j/j48wyqg939sffc816xx3pm5r0000gn/T/AppTranslocation/FAC55019-E684-42A7-8A76-96A1B2445372/d/BlueJ.app/Contents/Resources/Java/junit-4.11.jar:/private/var/folders/5j/j48wyqg939sffc816xx3pm5r0000gn/T/AppTranslocation/FAC55019-E684-42A7-8A76-96A1B2445372/d/BlueJ.app/Contents/Resources/Java/hamcrest-core-1.3.jar:/private/var/folders/5j/j48wyqg939sffc816xx3pm5r0000gn/T/AppTranslocation/FAC55019-E684-42A7-8A76-96A1B2445372/d/BlueJ.app/Contents/Resources/Java/lang-stride.jar:/private/var/folders/5j/j48wyqg939sffc816xx3pm5r0000gn/T/AppTranslocation/FAC55019-E684-42A7-8A76-96A1B2445372/d/BlueJ.app/Contents/Resources/Java/userlib/pi4j-core.jar:/private/var/folders/5j/j48wyqg939sffc816xx3pm5r0000gn/T/AppTranslocation/FAC55019-E684-42A7-8A76-96A1B2445372/d/BlueJ.app/Contents/Resources/Java/userlib/pi4j-device.jar:/private/var/folders/5j/j48wyqg939sffc816xx3pm5r0000gn/T/AppTranslocation/FAC55019-E684-42A7-8A76-96A1B2445372/d/BlueJ.app/Contents/Resources/Java/userlib/pi4j-gpio-extension.jar:/private/var/folders/5j/j48wyqg939sffc816xx3pm5r0000gn/T/AppTranslocation/FAC55019-E684-42A7-8A76-96A1B2445372/d/BlueJ.app/Contents/Resources/Java/userlib/pi4j-service.jar:/Users/santiago/Desktop/LABORATORIOS/automata/automata
+>>>>>>> 966a0f3bbe16ae117e9f25e0b6941a8088745c4a
 -d
 G:\LABORATORIOS\automata\automata\doc
 -encoding
 UTF-8
 -charset
 UTF-8
+<<<<<<< HEAD
 G:\LABORATORIOS\automata\automata\aplicacion\AutomataCelular.java
 <---- end of javadoc command ---->
 Loading source file G:\LABORATORIOS\automata\automata\aplicacion\AutomataCelular.java...
@@ -27,3 +36,20 @@ G:\LABORATORIOS\automata\automata\aplicacion\AutomataCelular.java:3: error: clas
 package aplicacion;
 ^
 1 error
+=======
+/Users/santiago/Desktop/LABORATORIOS/automata/automata/aplicacion/AutomataCelular.java
+<---- end of javadoc command ---->
+Loading source file /Users/santiago/Desktop/LABORATORIOS/automata/automata/aplicacion/AutomataCelular.java...
+Constructing Javadoc information...
+Standard Doclet version 1.8.0_181
+Building tree for all the packages and classes...
+Generating /Users/santiago/Desktop/LABORATORIOS/automata/automata/doc/aplicacion/AutomataCelular.html...
+Generating /Users/santiago/Desktop/LABORATORIOS/automata/automata/doc/aplicacion/package-frame.html...
+Generating /Users/santiago/Desktop/LABORATORIOS/automata/automata/doc/aplicacion/package-summary.html...
+Generating /Users/santiago/Desktop/LABORATORIOS/automata/automata/doc/constant-values.html...
+Building index for all the packages and classes...
+Building index for all classes...
+Generating /Users/santiago/Desktop/LABORATORIOS/automata/automata/doc/allclasses-frame.html...
+Generating /Users/santiago/Desktop/LABORATORIOS/automata/automata/doc/allclasses-noframe.html...
+Generating /Users/santiago/Desktop/LABORATORIOS/automata/automata/doc/index.html...
+>>>>>>> 966a0f3bbe16ae117e9f25e0b6941a8088745c4a
