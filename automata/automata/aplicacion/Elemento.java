@@ -7,7 +7,7 @@ public interface Elemento{
   void cambie();
   
   default Color getColor(){
-      return Color.RED;
+      return Color.red;
   }    
   
   default boolean isVivo(){

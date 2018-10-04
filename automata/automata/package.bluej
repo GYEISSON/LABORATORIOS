@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #BlueJ package file
 editor.fx.0.height=739
 editor.fx.0.width=816
@@ -35,3 +36,46 @@ target2.type=PackageTarget
 target2.width=100
 target2.x=130
 target2.y=10
+=======
+#BlueJ package file
+editor.fx.0.height=1040
+editor.fx.0.width=1024
+editor.fx.0.x=1024
+editor.fx.0.y=22
+editor.fx.1.height=722
+editor.fx.1.width=800
+editor.fx.1.x=205
+editor.fx.1.y=172
+objectbench.height=138
+objectbench.width=733
+package.divider.horizontal=0.6
+package.divider.vertical=0.7010309278350515
+package.editor.height=333
+package.editor.width=631
+package.editor.x=1156
+package.editor.y=505
+package.frame.height=543
+package.frame.width=757
+package.numDependencies=0
+package.numTargets=2
+package.showExtends=true
+package.showUses=true
+project.charset=UTF-8
+readme.height=58
+readme.name=@README
+readme.width=47
+readme.x=10
+readme.y=10
+target1.height=62
+target1.name=presentacion
+target1.type=PackageTarget
+target1.width=120
+target1.x=10
+target1.y=90
+target2.height=62
+target2.name=aplicacion
+target2.type=PackageTarget
+target2.width=100
+target2.x=340
+target2.y=110
+>>>>>>> a06a8de3ccafd944b24b696f12349b6b956970bf
