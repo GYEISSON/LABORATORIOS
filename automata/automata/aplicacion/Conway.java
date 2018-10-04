@@ -21,7 +21,7 @@ public class Conway extends Celula
     }
 
     public void decida(){
-        System.out.println(fila+" "+columna);
+        System.out.println(fila+" "+columna+" nVecinos "+nVecinos());
         System.out.println((automata.getElemento(fila,columna).isVivo()));
         //esta muerta
         if(!(automata.getElemento(fila,columna).isVivo()) &&  nVecinos() ==3){
@@ -29,12 +29,15 @@ public class Conway extends Celula
             estadoSiguiente = VIVA;
         }
         //esta viva
-        else if(automata.getElemento(fila,columna).isVivo() && nVecinos() ==2 || nVecinos() ==3 ){
+        else if(automata.getElemento(fila,columna).isVivo() 
+        && nVecinos() ==2 || nVecinos() ==3 ){
             estadoSiguiente = VIVA;
             System.out.println("ok2");
         }
         //viva
-        else if( (automata.getElemento(fila,columna).isVivo() || !(automata.getElemento(fila,columna).isVivo())) && ( nVecinos() ==1 || nVecinos() > 3  )){
+        else if( (automata.getElemento(fila,columna).isVivo() ||
+        !(automata.getElemento(fila,columna).isVivo())) &&
+        ( nVecinos() ==1 || nVecinos() > 3  )){
             estadoSiguiente = MUERTA;
             System.out.println("ok3");
         }           
@@ -46,7 +49,11 @@ public class Conway extends Celula
        int contV = 0;
        for(int i =0;i<8;i++){
             if( fila+x[i] >=0 && fila+x[i] <19  && columna+y[i]>=0 && columna+y[i]<19){
-                if(automata.getElemento( fila+x[i] ,columna+y[i] ) != null) contV++;
+                if(automata.getElemento( fila+x[i] ,columna+y[i] ) != null ){
+                    if(automata.getElemento( fila+x[i] ,columna+y[i] ).isVivo()){
+                        contV +=1;
+                    }
+                }                
             }
        }
        return contV;

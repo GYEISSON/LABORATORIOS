@@ -32,17 +32,13 @@ public class Celula implements Elemento{
         
         this.fila=fila;
         this.columna=columna;
-        estadoActual=VIVA;
+        estadoActual=' ';
         estadoSiguiente=VIVA;
         edad=0;
         this.color = Color.black;
         automata.setElemento(fila,columna,(Elemento)this);  
         
-   }
-   
-
-
-    
+   }       
    /**Retorna la fila del automata en que se encuentra 
    @return 
    */
