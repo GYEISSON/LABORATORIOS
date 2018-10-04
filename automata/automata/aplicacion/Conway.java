@@ -22,7 +22,7 @@ public class Conway extends Celula
 
     public void decida(){
         System.out.println(fila+" "+columna);
-        System.out.println(nVecinos());
+        System.out.println((automata.getElemento(fila,columna).isVivo()));
         //esta muerta
         if(!(automata.getElemento(fila,columna).isVivo()) &&  nVecinos() ==3){
             System.out.println("ok1");
@@ -34,7 +34,7 @@ public class Conway extends Celula
             System.out.println("ok2");
         }
         //viva
-        else if( nVecinos() ==1 || nVecinos() > 3  ){
+        else if( (automata.getElemento(fila,columna).isVivo() || !(automata.getElemento(fila,columna).isVivo())) && ( nVecinos() ==1 || nVecinos() > 3  )){
             estadoSiguiente = MUERTA;
             System.out.println("ok3");
         }           

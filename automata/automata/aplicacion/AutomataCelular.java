@@ -65,16 +65,26 @@ public class AutomataCelular{
        for (int f=0;f<19;f++){
            for (int c=0;c<19;c++){               
                if (automata[f][c]!= null){
-                   System.out.println("ok");
+
                    automata[f][c].decida();
-                   automata[f][c].cambie();
+                   
                }            
                else{
                    if(nVecinos(f,c)==3){
                        automata[f][c] = new Conway(this,f,c);
-                       
                    }
                }
+           }
+       }
+       for (int f=0;f<19;f++){
+           for (int c=0;c<19;c++){               
+               if (automata[f][c]!= null){
+
+                   automata[f][c].cambie();
+                   
+               }            
+               
+               
            }
        }
    }

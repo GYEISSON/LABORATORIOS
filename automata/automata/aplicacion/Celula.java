@@ -32,7 +32,7 @@ public class Celula implements Elemento{
         
         this.fila=fila;
         this.columna=columna;
-        estadoActual=' ';
+        estadoActual=VIVA;
         estadoSiguiente=VIVA;
         edad=0;
         this.color = Color.black;
@@ -86,11 +86,11 @@ public class Celula implements Elemento{
        }   
     }
 
-    /**Actualiza su estado actual considerando lo definido como siguiente estado
-    */
-    public void cambie(){
+   /**Actualiza su estado actual considerando lo definido como siguiente estado
+   */
+   public void cambie(){
         edad++;
         estadoActual=estadoSiguiente;
-    }
+   }
 
 }
