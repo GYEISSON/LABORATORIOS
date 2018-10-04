@@ -35,30 +35,30 @@ public class AutomataCelular{
    
     public void algunosElementos(){
         
-        //barreras
-        Barrera noreste = new Barrera(this,19,19);
-        Barrera sureste = new Barrera(this,0,19);
-        //celulas
-        Celula cerocerosiete = new Celula(this,1,1);
-        Celula indiana = new Celula(this,2,2);
+        // //barreras
+        // Barrera noreste = new Barrera(this,19,19);
+        // Barrera sureste = new Barrera(this,0,19);
+        // //celulas
+        // Celula cerocerosiete = new Celula(this,1,1);
+        // Celula indiana = new Celula(this,2,2);
         
-        // //celulas izquierdosas
-        Izquierdosa otra = new Izquierdosa(this,5,5);
-        Izquierdosa celula = new Izquierdosa(this,5,6);
-        Izquierdosa otra1 = new Izquierdosa(this,5,7);
-        Izquierdosa celula1 = new Izquierdosa(this,5,8);
+        // // //celulas izquierdosas
+        // Izquierdosa otra = new Izquierdosa(this,5,5);
+        // Izquierdosa celula = new Izquierdosa(this,5,6);
+        // Izquierdosa otra1 = new Izquierdosa(this,5,7);
+        // Izquierdosa celula1 = new Izquierdosa(this,5,8);
        
-        Oxigenada ox1 = new Oxigenada(this,10,10);
-        Oxigenada ox2 = new Oxigenada(this,10,11);
+        // Oxigenada ox1 = new Oxigenada(this,10,10);
+        // Oxigenada ox2 = new Oxigenada(this,10,11);
        
         
-        Manzana m = new Manzana(this,0,0);
+        // Manzana m = new Manzana(this,0,0);
        
-        Conway uno= new Conway(this,8,4);
-        Conway dos= new Conway(this,9,5);
-        Conway tres= new Conway(this,10,3);
-        Conway cuatro= new Conway(this,10,4);
-        Conway cinco= new Conway(this,10,5);
+        // Conway uno= new Conway(this,8,4);
+        // Conway dos= new Conway(this,9,5);
+        // Conway tres= new Conway(this,10,3);
+        // Conway cuatro= new Conway(this,10,4);
+        // Conway cinco= new Conway(this,10,5);
         
     }
     public int nVecinos(int fila,int columna){

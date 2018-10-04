@@ -94,4 +94,20 @@ public class AutomataCelularTest
         
     }
     
+    @Test
+    public void gameOfLife(){
+        AutomataCelular at = new AutomataCelular();
+        Conway yeisson = new Conway(at,2,2);
+        Conway santiago = new Conway(at,2,3);
+        
+        at.ticTac();
+        assertTrue("LA celula yeisson deberia estar viva",at.getElemento(2,2).isVivo());
+        assertTrue("LA celula santiago deberia estar viva",at.getElemento(2,3).isVivo());
+        at.ticTac();
+        assertFalse("LA celula yeisson deberia estar muerta",at.getElemento(2,2).isVivo());
+        assertFalse("LA celula santiago deberia estar muerta",at.getElemento(2,3).isVivo());
+        at.ticTac();
+        assertFalse("LA celula yeisson deberia estar muerta",at.getElemento(2,2).isVivo());
+        assertFalse("LA celula santiago deberia estar muerta",at.getElemento(2,3).isVivo());    
+    }    
 }
