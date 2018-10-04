@@ -21,25 +21,25 @@ public class Conway extends Celula
     }
 
     public void decida(){
-        System.out.println(fila+" "+columna+" nVecinos "+nVecinos());
-        System.out.println((automata.getElemento(fila,columna).isVivo()));
+        //System.out.println(fila+" "+columna+" nVecinos "+nVecinos());
+        //System.out.println((automata.getElemento(fila,columna).isVivo()));
         //esta muerta
         if(!(automata.getElemento(fila,columna).isVivo()) &&  nVecinos() ==3){
-            System.out.println("ok1");
+            //System.out.println("ok1");
             estadoSiguiente = VIVA;
         }
         //esta viva
         else if(automata.getElemento(fila,columna).isVivo() 
         && nVecinos() ==2 || nVecinos() ==3 ){
             estadoSiguiente = VIVA;
-            System.out.println("ok2");
+            //System.out.println("ok2");
         }
         //viva
         else if( (automata.getElemento(fila,columna).isVivo() ||
         !(automata.getElemento(fila,columna).isVivo())) &&
         ( nVecinos() ==1 || nVecinos() > 3  )){
             estadoSiguiente = MUERTA;
-            System.out.println("ok3");
+            //System.out.println("ok3");
         }           
     }
     
