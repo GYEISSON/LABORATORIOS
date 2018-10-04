@@ -36,36 +36,35 @@ public class AutomataCelular{
    }
    
    public void algunosElementos(){
-       //barreras
-       //Barrera noreste = new Barrera(this,19,19);
-       //Barrera sureste = new Barrera(this,0,19);
-       // //celulas
-       // Celula cerocerosiete = new Celula(this,1,1);
-       // Celula indiana = new Celula(this,2,2);
+       // barreras
+       Barrera noreste = new Barrera(this,19,19);
+       Barrera sureste = new Barrera(this,0,19);
+       //celulas
+       Celula cerocerosiete = new Celula(this,1,1);
+       Celula indiana = new Celula(this,2,2);
        
-       // //celulas izquierdosas
-       // Izquierdosa otra = new Izquierdosa(this,5,5);
-       // Izquierdosa celula = new Izquierdosa(this,5,6);
-       // Izquierdosa otra1 = new Izquierdosa(this,5,7);
-       // Izquierdosa celula1 = new Izquierdosa(this,5,8);
+       //celulas izquierdosas
+       Izquierdosa marx = new Izquierdosa(this,3,5);
+       Izquierdosa hegel = new Izquierdosa(this,3,6);
+       Izquierdosa otra1 = new Izquierdosa(this,5,7);
+       Izquierdosa celula1 = new Izquierdosa(this,5,8);
        
-       // Oxigenada ox1 = new Oxigenada(this,10,10);
-       // Oxigenada ox2 = new Oxigenada(this,10,11);
+       Oxigenada gualdron = new Oxigenada(this,10,10);
+       Oxigenada rubiano = new Oxigenada(this,10,11);
        
-       
-       // Manzana m = new Manzana(this,0,0);
+       Manzana m1 = new Manzana(this,0,0);
+       Manzana m2 = new Manzana(this,9,10);
        
        Conway uno= new Conway(this,13,13);
        Conway dos= new Conway(this,14,13);
        Conway tres= new Conway(this,15,13);
-       //Conway cuatro= new Conway(this,1,2);
-       //Conway cinco= new Conway(this,2,1);
+       Conway cuatro= new Conway(this,1,2);
+       Conway cinco= new Conway(this,2,1);
    }    
    public void ticTac(){
        for (int f=0;f<19;f++){
            for (int c=0;c<19;c++){               
                if (automata[f][c]!= null){
-
                    automata[f][c].decida();
                    
                }            

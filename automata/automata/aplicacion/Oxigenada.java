@@ -1,19 +1,19 @@
-package aplicacion;
-import java.util.*;
-import java.io.*;
-import java.awt.Color;
-
-
-/**
- * Write a description of class Oxigenada here.
- *
- * @author (your name)
- * @version (a version number or a date)
- */
-public class Oxigenada extends  Celula {
+    package aplicacion;
+    import java.util.*;
+    import java.io.*;
+    import java.awt.Color;
+    
+    
+    /**
+    * Write a description of class Oxigenada here.
+    *
+    * @author (your name)
+    * @version (a version number or a date)
+    */
+    public class Oxigenada extends  Celula {
     
     private int numVecinos;
-
+    
     /**
      * Constructor for objects of class Oxigenada
      */
@@ -24,10 +24,10 @@ public class Oxigenada extends  Celula {
         numVecinos = 0;
     }
     
-
+    
     /**Decide cual va a ser su  siguiente estado 
     */
-    public void decida(){
+   public void decida(){
        if(edad>=1 && edad <=2){
            this.color = Color.yellow;
        }

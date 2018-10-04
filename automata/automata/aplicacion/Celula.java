@@ -32,7 +32,7 @@ public class Celula implements Elemento{
         
         this.fila=fila;
         this.columna=columna;
-        estadoActual=VIVA;
+        estadoActual=' ';
         estadoSiguiente=VIVA;
         edad=0;
         this.color = Color.black;
