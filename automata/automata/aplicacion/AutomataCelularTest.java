@@ -133,7 +133,7 @@ public class AutomataCelularTest
     }
     
     @Test
-    public void gameOfLife(){
+    public void gameOfLife1(){
         AutomataCelular at = new AutomataCelular();
         Conway yeisson = new Conway(at,2,2);
         Conway santiago = new Conway(at,2,3);

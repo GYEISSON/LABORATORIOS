@@ -54,11 +54,11 @@ public class AutomataCelular{
         
         // Manzana m = new Manzana(this,0,0);
        
-        // Conway uno= new Conway(this,8,4);
-        // Conway dos= new Conway(this,9,5);
-        // Conway tres= new Conway(this,10,3);
-        // Conway cuatro= new Conway(this,10,4);
-        // Conway cinco= new Conway(this,10,5);
+        Conway uno= new Conway(this,8,4);
+        Conway dos= new Conway(this,9,5);
+        Conway tres= new Conway(this,10,3);
+        Conway cuatro= new Conway(this,10,4);
+        Conway cinco= new Conway(this,10,5);
         
     }
     public int nVecinos(int fila,int columna){
