@@ -1,0 +1,44 @@
+Class documentation
+<---- javadoc command: ---->
+/private/var/folders/5j/j48wyqg939sffc816xx3pm5r0000gn/T/AppTranslocation/1A4CA234-FE0C-49D6-8647-E4CEF406E276/d/BlueJ.app/Contents/JDK/Home/bin/javadoc
+-author
+-version
+-nodeprecated
+-package
+-Xdoclint:none
+-noindex
+-notree
+-nohelp
+-nonavbar
+-source
+1.8
+-classpath
+/private/var/folders/5j/j48wyqg939sffc816xx3pm5r0000gn/T/AppTranslocation/1A4CA234-FE0C-49D6-8647-E4CEF406E276/d/BlueJ.app/Contents/Resources/Java/bluejcore.jar:/private/var/folders/5j/j48wyqg939sffc816xx3pm5r0000gn/T/AppTranslocation/1A4CA234-FE0C-49D6-8647-E4CEF406E276/d/BlueJ.app/Contents/Resources/Java/junit-4.11.jar:/private/var/folders/5j/j48wyqg939sffc816xx3pm5r0000gn/T/AppTranslocation/1A4CA234-FE0C-49D6-8647-E4CEF406E276/d/BlueJ.app/Contents/Resources/Java/hamcrest-core-1.3.jar:/private/var/folders/5j/j48wyqg939sffc816xx3pm5r0000gn/T/AppTranslocation/1A4CA234-FE0C-49D6-8647-E4CEF406E276/d/BlueJ.app/Contents/Resources/Java/lang-stride.jar:/private/var/folders/5j/j48wyqg939sffc816xx3pm5r0000gn/T/AppTranslocation/1A4CA234-FE0C-49D6-8647-E4CEF406E276/d/BlueJ.app/Contents/Resources/Java/userlib/pi4j-core.jar:/private/var/folders/5j/j48wyqg939sffc816xx3pm5r0000gn/T/AppTranslocation/1A4CA234-FE0C-49D6-8647-E4CEF406E276/d/BlueJ.app/Contents/Resources/Java/userlib/pi4j-device.jar:/private/var/folders/5j/j48wyqg939sffc816xx3pm5r0000gn/T/AppTranslocation/1A4CA234-FE0C-49D6-8647-E4CEF406E276/d/BlueJ.app/Contents/Resources/Java/userlib/pi4j-gpio-extension.jar:/private/var/folders/5j/j48wyqg939sffc816xx3pm5r0000gn/T/AppTranslocation/1A4CA234-FE0C-49D6-8647-E4CEF406E276/d/BlueJ.app/Contents/Resources/Java/userlib/pi4j-service.jar:/Users/santiago/Desktop/untitled folder 2
+-d
+/Users/santiago/Desktop/untitled folder 2/doc
+-encoding
+UTF-8
+-charset
+UTF-8
+/Users/santiago/Desktop/untitled folder 2/aplicacion/Mooc.java
+<---- end of javadoc command ---->
+Loading source file /Users/santiago/Desktop/untitled folder 2/aplicacion/Mooc.java...
+Constructing Javadoc information...
+Standard Doclet version 1.8.0_181
+Building tree for all the packages and classes...
+Generating /Users/santiago/Desktop/untitled folder 2/doc/aplicacion/Mooc.html...
+/Users/santiago/Desktop/untitled folder 2/aplicacion/Mooc.java:26: warning - @return tag has no arguments.
+/Users/santiago/Desktop/untitled folder 2/aplicacion/Mooc.java:33: warning - @return tag has no arguments.
+/Users/santiago/Desktop/untitled folder 2/aplicacion/Mooc.java:40: warning - @return tag has no arguments.
+/Users/santiago/Desktop/untitled folder 2/aplicacion/Mooc.java:47: warning - @return tag has no arguments.
+/Users/santiago/Desktop/untitled folder 2/aplicacion/Mooc.java:54: warning - @return tag has no arguments.
+/Users/santiago/Desktop/untitled folder 2/aplicacion/Mooc.java:63: warning - @return tag has no arguments.
+Generating /Users/santiago/Desktop/untitled folder 2/doc/aplicacion/package-frame.html...
+Generating /Users/santiago/Desktop/untitled folder 2/doc/aplicacion/package-summary.html...
+Generating /Users/santiago/Desktop/untitled folder 2/doc/constant-values.html...
+Building index for all the packages and classes...
+Building index for all classes...
+Generating /Users/santiago/Desktop/untitled folder 2/doc/allclasses-frame.html...
+Generating /Users/santiago/Desktop/untitled folder 2/doc/allclasses-noframe.html...
+Generating /Users/santiago/Desktop/untitled folder 2/doc/index.html...
+6 warnings
