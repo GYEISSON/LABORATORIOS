@@ -1,4 +1,4 @@
-package src.aplicacion; 
+package src.presentacion.aplicacion; 
 
 import java.util.LinkedList;
 import java.util.ArrayList;
@@ -9,8 +9,6 @@ import java.util.ArrayList;
 
 public class Iemois{
     private LinkedList <Mooc> cursos;
-
-
 
     public Iemois(){
         cursos = new LinkedList<Mooc>();

@@ -12,9 +12,8 @@ import org.junit.*;
 public class IemoisExcepcion{
 
     public IemoisExcepcion(){
+    
     }
-
-
     @Before
     public void setUp(){
     }
