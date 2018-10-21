@@ -9,8 +9,10 @@ package excepcion;
  */
 public class IemoisExcepcion extends Exception
 {
-    public static final String  DISTRIBUIDOR= "El distribuidor falta";
-    public static final String  REPETIDO= "El curso ya se ha agregado";
+    public static final String  DISTRIBUIDOR= "El distribuidor falta!";
+    public static final String  REPETIDO= "El curso ya se ha agregado!";
+    public static final String MAYOSTRI="La primera letra debe ser mayuscula o empezar por String!";
+    public static final String VACIO = "No puede ser un campo vacio!";
     /**
      * Constructor for objects of class IemoisExcepcion
      */

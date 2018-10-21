@@ -1,5 +1,6 @@
 package aplicacion; 
-
+   
+import java.util.*;
 import java.util.LinkedList;
 import java.util.ArrayList;
 import excepcion.*;
@@ -62,13 +63,40 @@ public class Iemois{
          * Adiciona un nuevo curso
          */
     public void adicione(String nombre, String area,  String objetivo, String  distribuidor, String semanas) throws IemoisExcepcion{
+        Mooc m = new Mooc(nombre, area, objetivo, distribuidor, semanas);
         if(distribuidor.isEmpty()) {
             throw new IemoisExcepcion(IemoisExcepcion.DISTRIBUIDOR);
         }
-        if(cursos.contains(new Mooc(nombre, area, objetivo, distribuidor, semanas))){
+        if(cursoRepetido(m)){
             throw new IemoisExcepcion(IemoisExcepcion.REPETIDO);
         }
+        if(nombre.isEmpty()) {
+            throw new IemoisExcepcion(IemoisExcepcion.VACIO);
+        }
+        if(area.isEmpty()) {
+            throw new IemoisExcepcion(IemoisExcepcion.VACIO);
+        }
+        if(objetivo.isEmpty()) {
+            throw new IemoisExcepcion(IemoisExcepcion.VACIO);
+        }
+        if(semanas.isEmpty()) {
+            throw new IemoisExcepcion(IemoisExcepcion.VACIO);
+        }
+        // if(!Character.isUpperCase(nombre.charAt(0))){
+            // throw new IemoisExcepcion(IemoisExcepcion.MAYOSTRI);
+        // }
+        // if(!Character.isUpperCase(area.charAt(0))){
+            // throw new IemoisExcepcion(IemoisExcepcion.MAYOSTRI);
+        // }
+        // if(!Character.isUpperCase(distribuidor.charAt(0))){
+            // throw new IemoisExcepcion(IemoisExcepcion.MAYOSTRI);
+        // }
+        // if(!Character.isUpperCase(objetivo.charAt(0))){
+            // throw new IemoisExcepcion(IemoisExcepcion.MAYOSTRI);
+        // }
+        
         adicione(new Mooc(nombre, area, objetivo, distribuidor, semanas));
+        
     }
 
     /**
@@ -77,11 +105,12 @@ public class Iemois{
      * @param  Curso
      * @return Si esta o no en cursos
      */
-    public boolean cursoRepetido(Mooc c)
-    {
-        System.out.println(c.getClass().getName()+"]]]]]]]]]]]]]]]]]]]]");
-        if (cursos.contains(c))return true;
-        else return false;
+    private boolean cursoRepetido(Mooc m) {
+        
+        for(Mooc c : cursos) {
+            if(c.equal(m)) return true;
+        }
+        return false;
     }
     
     /**
@@ -127,7 +156,7 @@ public class Iemois{
      * @return 
      */
     public String toString(){
-	StringBuffer allEntries=new StringBuffer();
+    StringBuffer allEntries=new StringBuffer();
         for(Mooc informacion : cursos) {
             allEntries.append(informacion.toString().length()<=150? informacion:informacion.toString().substring(0,199)+"...");
             allEntries.append('\n');

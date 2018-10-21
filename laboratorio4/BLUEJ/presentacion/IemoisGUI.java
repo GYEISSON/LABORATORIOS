@@ -265,11 +265,16 @@ public class IemoisGUI extends JFrame{
     
     private void  accionAdicionar(){
         try{
+            int a = Integer.parseInt(textoSemanas.getText());
             coleccion.adicione(textoNombre.getText(),textoArea.getText(),textoObjetivo.getText(), textoDistribuidor.getText(), 
             textoSemanas.getText());
         }
         catch(IemoisExcepcion e){
             JOptionPane.showMessageDialog(null,e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);
+        }
+        catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(null,"Semanas de contener enteros!!","Error",JOptionPane.ERROR_MESSAGE);
+
         }
     }
 
