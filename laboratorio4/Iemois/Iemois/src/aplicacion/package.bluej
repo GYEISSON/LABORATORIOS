@@ -1,15 +1,18 @@
 #BlueJ package file
-objectbench.height=103
-objectbench.width=760
+dependency1.from=Iemois
+dependency1.to=Mooc
+dependency1.type=UsesDependency
+objectbench.height=112
+objectbench.width=776
 package.divider.horizontal=0.6
-package.divider.vertical=0.78
-package.editor.height=383
-package.editor.width=644
+package.divider.vertical=0.7804428044280443
+package.editor.height=416
+package.editor.width=674
 package.editor.x=509
 package.editor.y=133
 package.frame.height=600
 package.frame.width=800
-package.numDependencies=0
+package.numDependencies=1
 package.numTargets=2
 package.showExtends=true
 package.showUses=true
