@@ -1,26 +1,26 @@
-package src.presentacion; 
+package presentacion; 
   
-
-import src.aplicacion.*;
-
+import registro.*;
+import aplicacion.*;
+import excepcion.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
 import java.util.*;
-
+            
 /**
- * @version ECI 2016
- */
+* @version ECI 2016
+*/
 public class IemoisGUI extends JFrame{
-
+    
     private static final int ANCHO_PREFERIDO = 450;
     private static final int ALTO_PREFERIDO= 450;
     private static final Dimension DIMENSION_PREFERIDA =
                          new Dimension(ANCHO_PREFERIDO,ALTO_PREFERIDO);
-
+    
     private Iemois coleccion;
-
+    
     /*Panel botonListar*/
     private JButton botonListar;
     private JButton botonReiniciarListar;
@@ -40,7 +40,7 @@ public class IemoisGUI extends JFrame{
     private JTextField busquedaTexto;
     private JTextArea resultadosTexto;
     
-
+    
     
     
     private IemoisGUI(){
@@ -49,8 +49,8 @@ public class IemoisGUI extends JFrame{
         prepareElementos();
         prepareAcciones();
     }
-
-
+    
+    
     private void prepareElementos(){
         setTitle("Sinap. Areas.");
         textoNombre = new JTextField(50);
@@ -68,14 +68,14 @@ public class IemoisGUI extends JFrame{
         setSize(DIMENSION_PREFERIDA);
         
     }
-
-
+    
+    
     /**
      * Prepara el panel para listar
      * @return
      */
     private JPanel prepareListar(){
-
+    
         textoInformacion = new JTextArea(10, 50);
         textoInformacion.setEditable(false);
         textoInformacion.setLineWrap(true);
@@ -95,7 +95,7 @@ public class IemoisGUI extends JFrame{
         panel.setLayout(new BorderLayout());
         panel.add(scrollArea, BorderLayout.CENTER);
         panel.add(botones, BorderLayout.SOUTH);
-
+    
         return panel;
      }
      
@@ -111,7 +111,7 @@ public class IemoisGUI extends JFrame{
         Box nombreArea = Box.createVerticalBox();
         nombreArea.add(textoNombreArea);
         nombreArea.add(textoNombre);
-
+    
         Box textoAreaArea = Box.createHorizontalBox();
         textoAreaArea.add(new JLabel("Area", JLabel.LEFT));
         textoAreaArea.add(Box.createGlue());
@@ -125,7 +125,7 @@ public class IemoisGUI extends JFrame{
         Box DistribuidorArea = Box.createVerticalBox();
         DistribuidorArea.add(textoDistribuidorArea);
         DistribuidorArea.add(textoDistribuidor);
-
+    
         Box textoSemanasArea = Box.createHorizontalBox();
         textoSemanasArea.add(new JLabel("Semanas", JLabel.LEFT));
         textoSemanasArea.add(Box.createGlue());
@@ -139,42 +139,42 @@ public class IemoisGUI extends JFrame{
         Box ObjetivoArea = Box.createVerticalBox();
         ObjetivoArea.add(textoObjetivoArea);
         ObjetivoArea.add(textoObjetivo);
- 
+    
         Box singleLineFields = Box.createVerticalBox();
         singleLineFields.add(nombreArea);
         singleLineFields.add(AreaArea);
         singleLineFields.add(DistribuidorArea);
         singleLineFields.add(SemanasArea);        
-
+    
         JPanel textoInformacionPanel = new JPanel();
         textoInformacionPanel.setLayout(new BorderLayout());
         textoInformacionPanel.add(singleLineFields, BorderLayout.NORTH);
         textoInformacionPanel.add(ObjetivoArea, BorderLayout.CENTER);
-
+    
         JPanel botones = new JPanel();
         botonAdicionar = new JButton("Adicionar");
         botonReiniciarAdicionar = new JButton("Limpiar");
-
+    
         botones.add(botonAdicionar);
         botones.add(botonReiniciarAdicionar);
-
+    
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());
         panel.add(textoInformacionPanel, BorderLayout.CENTER);
         panel.add(botones, BorderLayout.SOUTH);
         return panel;
     }
-
     
-
-
-
-   /**
+    
+    
+    
+    
+    /**
      * Prepara el area de liatar
      * @return El panel para buscar coleccions
      */
     private JPanel prepareBuscar(){
-
+    
         Box busquedaEtiquetaArea = Box.createHorizontalBox();
         busquedaEtiquetaArea.add(new JLabel("Buscar", JLabel.LEFT));
         busquedaEtiquetaArea.add(Box.createGlue());
@@ -190,16 +190,16 @@ public class IemoisGUI extends JFrame{
         JScrollPane scrollArea = new JScrollPane(resultadosTexto,
                                      JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
                                      JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-
+    
         JPanel botonListarArea = new JPanel();
         botonListarArea.setLayout(new BorderLayout());
         botonListarArea.add(busquedaArea, BorderLayout.NORTH);
         botonListarArea.add(scrollArea, BorderLayout.CENTER);
-
+    
         return botonListarArea;
     }
-
-
+    
+    
     public void prepareAcciones(){
         addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent ev){
@@ -214,7 +214,7 @@ public class IemoisGUI extends JFrame{
                 accionListar();
             }
         });
-
+    
         botonReiniciarListar.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent ev){
                 textoInformacion.setText("");
@@ -242,7 +242,7 @@ public class IemoisGUI extends JFrame{
         busquedaTexto.getDocument().addDocumentListener(new DocumentListener(){
             public void changedUpdate(DocumentEvent ev){
                 accionBuscar();
-
+    
             }
            
             public void insertUpdate(DocumentEvent ev){
@@ -253,10 +253,10 @@ public class IemoisGUI extends JFrame{
                 accionBuscar();
             }
             
-
+    
         });
     }    
-
+    
     
     private void accionListar(){
         textoInformacion.setText(coleccion.toString());
@@ -264,20 +264,32 @@ public class IemoisGUI extends JFrame{
     
     
     private void  accionAdicionar(){
-        coleccion.adicione(textoNombre.getText(),textoArea.getText(),textoObjetivo.getText(), textoDistribuidor.getText(), 
-        textoSemanas.getText());
+        try{
+            coleccion.adicione(textoNombre.getText(),textoArea.getText(),textoObjetivo.getText(), textoDistribuidor.getText(), 
+            textoSemanas.getText());
+        }
+        catch(IemoisExcepcion e){
+            JOptionPane.showMessageDialog(null,e,"Error",JOptionPane.ERROR_MESSAGE);
+            Registro.registre(e);
+        }
     }
 
     private void accionBuscar(){
         String patronBusqueda=busquedaTexto.getText();
         StringBuffer buffer = new StringBuffer();
         if(patronBusqueda.length() > 0) {
+            try{
             ArrayList <Mooc> results = coleccion.busque(patronBusqueda);
             for(int i = 0; i < results.size(); i++) {
                 buffer.append(results.get(i).toString());
                 buffer.append('\n');
                 buffer.append('\n');
              }
+            }
+            catch(Exception e){
+                JOptionPane.showMessageDialog(null,"????","Error",JOptionPane.ERROR_MESSAGE);
+                Registro.registre(e);
+            }
         }
         resultadosTexto.setText(buffer.toString());
     } 
