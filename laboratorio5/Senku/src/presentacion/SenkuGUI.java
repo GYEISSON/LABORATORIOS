@@ -6,7 +6,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
-import java.swing.JoptionPane;
 
 public class SenkuGUI extends JFrame{
 	
