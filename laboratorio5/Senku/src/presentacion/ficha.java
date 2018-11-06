@@ -1,5 +1,5 @@
 package presentacion;
 
-public class ficha {
+public class Ficha {
 
 }
