@@ -1,11 +1,12 @@
 package presentacion;
 
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.geom.*;
 import java.io.*;
 
-@SuppressWarnings("serial")
 public class SenkuGUI extends JFrame{
 	
 	private JMenuBar menuBar;
@@ -14,15 +15,15 @@ public class SenkuGUI extends JFrame{
 	private JMenuItem abrir;
 	private JMenuItem guardar;
 	private JMenuItem salir;
-	private FondoSenku  foto;
+	private JPanel b;
+	private int[][] m = {{0,1,0},{1,2,1},{0,1,0}};
 
-	private tablero t;
 	public SenkuGUI(){
 		super("Senku"); 
-		t = new tablero();
 		prepareElementos();
 		prepareElementosMenu();
 		prepareAcciones();
+		prepareElementosGrid();
 		
 	}
 
@@ -49,10 +50,7 @@ public class SenkuGUI extends JFrame{
 		
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		setSize(screenSize.width/2, screenSize.height/2);
-		setLocationRelativeTo(null);		
-		getContentPane().setLayout(new BorderLayout());
-        getContentPane().add(t,BorderLayout.CENTER);
-        t.repaint();
+		setLocationRelativeTo(null);
 	}
 	
 	private void prepareAcciones(){
@@ -67,6 +65,7 @@ public class SenkuGUI extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				abrir();
 			}
+			
 		});
 		
 		salir.addActionListener(new ActionListener() {
@@ -80,14 +79,15 @@ public class SenkuGUI extends JFrame{
 				guardar();
 			}
 		});
-		
-	}
-	
+	}	
 
+	private void prepareElementosGrid() {
+		grid();
+	}
 	private void salga(){
 	       int c = JOptionPane.showConfirmDialog(null,"Desea salir?","EXIT",JOptionPane.YES_NO_OPTION);
 	       if (JOptionPane.YES_OPTION == c) {
-	    	       System.exit(1);
+	    	   System.exit(1);
 	       }
 	}
 	
@@ -97,7 +97,7 @@ public class SenkuGUI extends JFrame{
 		if (result == JFileChooser.APPROVE_OPTION) {
 		    File selectedFile = file.getSelectedFile();
 		    //System.out.println("Selected file: " + selectedFile.getAbsolutePath());
-			JOptionPane.showMessageDialog(this, "La funcionalidad abrir esta en construccion");
+		    JOptionPane.showMessageDialog(this, "La funcionalidad abrir esta en construccion");
 		}
 		
 	}
@@ -110,8 +110,8 @@ public class SenkuGUI extends JFrame{
 		 
 		if (userSelection == JFileChooser.APPROVE_OPTION) {
 		    File fileToSave = fileChooser.getSelectedFile();
-		    System.out.println("Save as file: " + fileToSave.getAbsolutePath());
-			JOptionPane.showMessageDialog(this, "La funcionalidad guardar esta en construccion");
+//		    System.out.println("Save as file: " + fileToSave.getAbsolutePath());
+		    JOptionPane.showMessageDialog(this, "La funcionalidad guardar esta en construccion");
 		}
 	}
 	
@@ -120,69 +120,37 @@ public class SenkuGUI extends JFrame{
 		se.setVisible(true);
 	}
 	
-	
-	
-class tablero extends JPanel{
-	
-	    public int TAMANO=40;
+	public void grid() {
+		
+				
+		b = new JPanel();
+		b.setLayout(new GridLayout(3,3,10,10));
 
-	    public tablero() {
-	        setBackground(Color.white);
-	        setPreferredSize(new Dimension(200,200));       
-
-	    }
-
-
-	    public void paintComponent(Graphics g){
-	    	
-	    	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-			int x=(screenSize.width/2)/2;
-			int y=(screenSize.height/2)/2;
-			y=y-y/2;
-			x=x-x/3;
-
-	    	int largo,ancho;
-	    	largo=7;
-	    	ancho=3;
-	        super.paintComponent(g);
-	        //eje horizontal
-	        for (int f=0;f<=largo;f++){
-	            g.drawLine(f*TAMANO+x,80+y,f*TAMANO+x,ancho*TAMANO+80+y);
-	        }
-	        //eje vertical
-	        for (int cc=0;cc<=ancho;cc++){
-	            g.drawLine(0+x,cc*TAMANO+80+y,largo*TAMANO+0+x,cc*TAMANO+80+y);
-	        }
-	        
-	        
-	      //eje horizontal
-	        for (int f=0;f<=ancho;f++){
-	            g.drawLine(f*TAMANO+80+x,0+y,f*TAMANO+80+x,largo*TAMANO+y);
-	        }
-	        //eje vertical
-	        for (int cb=0;cb<=largo;cb++){
-	            g.drawLine(80+x,cb*TAMANO+y,ancho*TAMANO+80+x,cb*TAMANO+y);
-	        }
-	    }
-	}
-	        
-}
-class FondoSenku extends JPanel{
-    public static int TAMANO=40;
-  
-    public FondoSenku() {
-        setBackground(Color.white);
-        setPreferredSize(new Dimension(800,800));       
-    }
-
-    public void paintComponent(Graphics g){
-        super.paintComponent(g);
-        for (int f=0;f<=3;f++){
-            g.drawLine(f*TAMANO,0,f*TAMANO,TAMANO*3);
-        }/*
-        for (int c=0;c<=3;c++){
-            g.drawLine(0,c*TAMANO,automata.getLongitud()*TAMANO,c*TAMANO);
-        }*/
-    }
-    
+			for (int row=0; row < m.length; row++)
+			{
+			    for (int col=0; col < m[row].length; col++)
+			    {
+			        int value = m[row][col];
+			        if(value==1) {
+			        	Ficha canica= new Ficha(Color.BLUE);  
+			        	//canica.setBackground(Color.YELLOW);
+			        	b.add(canica);
+			        }
+			        else if (value==2)
+			        {
+			        	Ficha canica= new Ficha(Color.WHITE);  
+			        	canica.setBackground(Color.WHITE);
+			        	b.add(canica);
+			        }
+			        else
+			        {
+			        	Ficha canica= new Ficha(Color.BLACK);  
+			        	canica.setBackground(Color.BLACK);
+				        b.add(canica,BorderLayout.CENTER);
+			        }
+		this.add(b,BorderLayout.CENTER);
+			    }
+			}
+			
+	}        
 }
