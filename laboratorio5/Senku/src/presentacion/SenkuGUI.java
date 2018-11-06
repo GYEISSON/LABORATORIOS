@@ -122,7 +122,7 @@ public class SenkuGUI extends JFrame{
 	
 	public void grid() {
 		
-				
+		boolean visible=false;
 		b = new JPanel();
 		b.setLayout(new GridLayout(3,3,10,10));
 
@@ -132,20 +132,21 @@ public class SenkuGUI extends JFrame{
 			    {
 			        int value = m[row][col];
 			        if(value==1) {
-			        	Ficha canica= new Ficha(Color.BLUE);  
+			        	visible=true;
+			        	Ficha canica= new Ficha(Color.BLUE,visible,value); 
 			        	//canica.setBackground(Color.YELLOW);
 			        	b.add(canica);
 			        }
 			        else if (value==2)
 			        {
-			        	Ficha canica= new Ficha(Color.WHITE);  
-			        	canica.setBackground(Color.WHITE);
+			        	visible=false;
+			        	Ficha canica= new Ficha(Color.BLUE,visible,value); 
 			        	b.add(canica);
 			        }
-			        else
+			        else if(value==0)
 			        {
-			        	Ficha canica= new Ficha(Color.BLACK);  
-			        	canica.setBackground(Color.BLACK);
+			        	visible=false;
+			        	Ficha canica= new Ficha(Color.BLUE,visible,value); 
 				        b.add(canica,BorderLayout.CENTER);
 			        }
 		this.add(b,BorderLayout.CENTER);

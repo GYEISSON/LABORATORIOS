@@ -9,9 +9,13 @@ import java.io.*;
 
 class Ficha extends JPanel {
 	private Color color;
-	public Ficha(Color color) {
+	private boolean visible;
+	private int value;
+	public Ficha(Color color,boolean visible,int value) {
 		super();
+		this.visible=visible;
 		this.color=color;
+		this.value=value;
 	} 
 	
 	
@@ -23,6 +27,15 @@ class Ficha extends JPanel {
 		System.out.println(x);
 		System.out.println(y);
 		g.setColor(color);
-		g.fillOval(x, y, 60, 60);
+		if(visible && (value==1)) {
+			g.fillOval(x, y, 60, 60);
+			this.setBackground(Color.DARK_GRAY);
 		}
+		else if (!visible && (value==2)){
+			this.setBackground(Color.DARK_GRAY);
+		}
+		else {
+			this.setBackground(Color.BLACK);
+		}
+	}
 }
