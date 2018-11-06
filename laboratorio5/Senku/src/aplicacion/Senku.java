@@ -1,6 +1,5 @@
 import java.util.*;
 
-
 public class Senku {
 	//height width 1 es el vertical
 	private static int height1,height2,width1,width2;
@@ -18,15 +17,14 @@ public class Senku {
 		
 		for(int i=mid1; i<(mid1+width1);i++) {
 			for(int j=0;j<hMatriz;j++ ) {
-				System.out.println(i+" "+j);
-				matriz[i][j]=1;
+				matriz[i][j]=2;
 			}
 		}
 		for(int i=0; i<wMatriz;i++) {
 			for(int j=mid2;j<(mid2+width2);j++ ) {
-				System.out.println(i+" "+j);
-				matriz[i][j]=1;
+				matriz[i][j]=2;
 			}
 		}
+		matriz[hMatriz/2][wMatriz/2] = 1;
 	}
 }
