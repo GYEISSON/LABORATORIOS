@@ -87,7 +87,7 @@ public class SenkuGUI extends JFrame{
 	private void salga(){
 	       int c = JOptionPane.showConfirmDialog(null,"Desea salir?","EXIT",JOptionPane.YES_NO_OPTION);
 	       if (JOptionPane.YES_OPTION == c) {
-	    	   System.exit(1);
+	    	       System.exit(1);
 	       }
 	}
 	
@@ -96,7 +96,8 @@ public class SenkuGUI extends JFrame{
 		int result = file.showOpenDialog(this);
 		if (result == JFileChooser.APPROVE_OPTION) {
 		    File selectedFile = file.getSelectedFile();
-		    System.out.println("Selected file: " + selectedFile.getAbsolutePath());
+		    //System.out.println("Selected file: " + selectedFile.getAbsolutePath());
+			JOptionPane.showMessageDialog(this, "La funcionalidad abrir esta en construccion");
 		}
 		
 	}
@@ -110,6 +111,7 @@ public class SenkuGUI extends JFrame{
 		if (userSelection == JFileChooser.APPROVE_OPTION) {
 		    File fileToSave = fileChooser.getSelectedFile();
 		    System.out.println("Save as file: " + fileToSave.getAbsolutePath());
+			JOptionPane.showMessageDialog(this, "La funcionalidad guardar esta en construccion");
 		}
 	}
 	
