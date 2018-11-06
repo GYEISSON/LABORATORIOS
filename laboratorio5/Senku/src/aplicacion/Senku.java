@@ -4,9 +4,9 @@ import java.util.*;
 
 public class Senku {
 	//height width 1 es el vertical
-	private static int height1,height2,width1,width2;
-	private  static int hMatriz,wMatriz,mid1,mid2;
-	private static int[][] matriz;
+	private int height1,height2,width1,width2;
+	private int hMatriz,wMatriz,mid1,mid2;
+	private int[][] matriz;
 	
 	public Senku() {
 		height1 =height2 = 7;
