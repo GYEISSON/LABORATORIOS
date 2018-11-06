@@ -15,6 +15,7 @@ public class SenkuGUI extends JFrame{
 	private JMenuItem abrir;
 	private JMenuItem guardar;
 	private JMenuItem salir;
+	private FondoSenku  foto;
 
 
 	public SenkuGUI(){
@@ -22,6 +23,7 @@ public class SenkuGUI extends JFrame{
 		prepareElementos();
 		prepareElementosMenu();
 		prepareAcciones();
+		foto = new FondoSenku();
 	}
 
 
@@ -48,6 +50,9 @@ public class SenkuGUI extends JFrame{
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		setSize(screenSize.width/2, screenSize.height/2);
 		setLocationRelativeTo(null);
+		getContentPane().setLayout(new BorderLayout());
+        getContentPane().add(foto,BorderLayout.NORTH);
+		foto.repaint();
 	}
 	
 	private void prepareAcciones(){
@@ -62,7 +67,6 @@ public class SenkuGUI extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				abrir();
 			}
-			
 		});
 		
 		salir.addActionListener(new ActionListener() {
@@ -114,4 +118,23 @@ public class SenkuGUI extends JFrame{
 		se.setVisible(true);
 	}
 
+}
+class FondoSenku extends JPanel{
+    public static int TAMANO=40;
+  
+    public FondoSenku() {
+        setBackground(Color.white);
+        setPreferredSize(new Dimension(800,800));       
+    }
+
+    public void paintComponent(Graphics g){
+        super.paintComponent(g);
+        for (int f=0;f<=3;f++){
+            g.drawLine(f*TAMANO,0,f*TAMANO,TAMANO*3);
+        }/*
+        for (int c=0;c<=3;c++){
+            g.drawLine(0,c*TAMANO,automata.getLongitud()*TAMANO,c*TAMANO);
+        }*/
+    }
+    
 }
