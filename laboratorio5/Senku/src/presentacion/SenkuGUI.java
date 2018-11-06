@@ -23,7 +23,7 @@ public class SenkuGUI extends JFrame{
 		prepareElementos();
 		prepareElementosMenu();
 		prepareAcciones();
-		prepareElementosGrid();
+		prepareElementosTablero();
 		
 	}
 	
@@ -79,7 +79,7 @@ public class SenkuGUI extends JFrame{
 		});
 	}	
 
-	private void prepareElementosGrid() {
+	private void prepareElementosTablero() {
 		grid();
 	}
 	
