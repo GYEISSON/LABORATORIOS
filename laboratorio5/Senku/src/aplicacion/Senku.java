@@ -31,6 +31,7 @@ public class Senku {
 	}
 
 	public void moveTo(int[] s,int[] t){
+		//s = source ,t = target
 		if(matriz[t[0]][t[1]] ==1 && matriz[s[0]][s[1]] ==2
 			&& ((s[0] == t[0] && (Math.abs(s[1]-t[1])==2)) 
 			|| (s[1] == t[1]  && (Math.abs(s[0]-t[0])==2)))) {
@@ -50,5 +51,14 @@ public class Senku {
 				}
 			}
 		}
+	}
+	public static boolean solve(){
+		int cont2 =0;
+		for(int i = 0;i<hMatriz;i++) {
+			for(int j = 0; j<wMatriz;j++) {
+				if(matriz[i][j]==2) cont2++;
+			}
+		}
+		return (cont2==1)? true:false;
 	}
 }
