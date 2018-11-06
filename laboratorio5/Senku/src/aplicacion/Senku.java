@@ -52,7 +52,7 @@ public class Senku {
 			}
 		}
 	}
-	public static boolean solve(){
+	public boolean solve(){
 		int cont2 =0;
 		for(int i = 0;i<hMatriz;i++) {
 			for(int j = 0; j<wMatriz;j++) {

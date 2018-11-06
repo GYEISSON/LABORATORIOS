@@ -23,7 +23,7 @@ public class SenkuGUI extends JFrame{
 		prepareElementos();
 		prepareElementosMenu();
 		prepareAcciones();
-		foto = new FondoSenku();
+		
 	}
 
 
@@ -49,17 +49,10 @@ public class SenkuGUI extends JFrame{
 		
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		setSize(screenSize.width/2, screenSize.height/2);
-		setLocationRelativeTo(null);
-<<<<<<< HEAD
-		getContentPane().setLayout(new BorderLayout());
-        getContentPane().add(foto,BorderLayout.NORTH);
-		foto.repaint();
-=======
-		
+		setLocationRelativeTo(null);		
 		getContentPane().setLayout(new BorderLayout());
         getContentPane().add(t,BorderLayout.CENTER);
         t.repaint();
->>>>>>> 78a9ebab50d815a2256db3397e2e1b114cc41b67
 	}
 	
 	private void prepareAcciones(){
