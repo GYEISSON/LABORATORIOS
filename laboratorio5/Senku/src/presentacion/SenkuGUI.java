@@ -26,8 +26,6 @@ public class SenkuGUI extends JFrame{
 		prepareElementosGrid();
 		
 	}
-
-
 	
 	private void prepareElementosMenu(){
 		menuBar = new JMenuBar();
@@ -84,6 +82,7 @@ public class SenkuGUI extends JFrame{
 	private void prepareElementosGrid() {
 		grid();
 	}
+	
 	private void salga(){
 	       int c = JOptionPane.showConfirmDialog(null,"Desea salir?","EXIT",JOptionPane.YES_NO_OPTION);
 	       if (JOptionPane.YES_OPTION == c) {
@@ -115,9 +114,8 @@ public class SenkuGUI extends JFrame{
 		}
 	}
 	
-	public static void main(String[] args) {
-		SenkuGUI se= new SenkuGUI();
-		se.setVisible(true);
+	private void refresque() {
+		this.revalidate();
 	}
 	
 	public void grid() {
@@ -154,4 +152,10 @@ public class SenkuGUI extends JFrame{
 			}
 			
 	}        
-}
+	
+	public static void main(String[] args) {
+		SenkuGUI se= new SenkuGUI();
+		se.setVisible(true);
+	}
+	
+	}
