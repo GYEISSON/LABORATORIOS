@@ -22,16 +22,13 @@ class Ficha extends JPanel {
 	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		int x = this.getWidth() / 2;
-		int y = this.getHeight() / 2;
-		System.out.println(x);
-		System.out.println(y);
+		int h=this.getHeight();
 		g.setColor(color);
-		if(visible && (value==1)) {
-			g.fillOval(x, y, 60, 60);
+		if(visible && (value==2)) {
+			g.fillOval(0, 0, h, h);
 			this.setBackground(Color.DARK_GRAY);
 		}
-		else if (!visible && (value==2)){
+		else if (!visible || (value==1)){
 			this.setBackground(Color.DARK_GRAY);
 		}
 		else {

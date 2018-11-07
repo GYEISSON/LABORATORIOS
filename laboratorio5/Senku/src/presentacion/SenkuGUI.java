@@ -1,12 +1,12 @@
 package presentacion;
-
+import aplicacion.Senku;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.geom.*;
 import java.io.*;
-
+import java.util.*;
 public class SenkuGUI extends JFrame{
 	
 	private JMenuBar menuBar;
@@ -16,7 +16,10 @@ public class SenkuGUI extends JFrame{
 	private JMenuItem guardar;
 	private JMenuItem salir;
 	private JPanel b;
-	private int[][] m = {{0,1,0},{1,2,1},{0,1,0}};
+	private Senku senku;
+	private ArrayList<Integer> elements;
+
+	//private int[][] m = {{0,0,1,1,1,0,0},{0,0,1,1,1,0,0},{1,1,1,1,1,1,1},{1,1,1,2,1,1,1},{1,1,1,1,1,1,1},{0,0,1,1,1,0,0},{0,0,1,1,1,0,0}};
 
 	public SenkuGUI(){
 		super("Senku"); 
@@ -80,6 +83,7 @@ public class SenkuGUI extends JFrame{
 	}	
 
 	private void prepareElementosTablero() {
+		senku = new Senku();
 		grid();
 	}
 	
@@ -97,65 +101,38 @@ public class SenkuGUI extends JFrame{
 		    File selectedFile = file.getSelectedFile();
 		    //System.out.println("Selected file: " + selectedFile.getAbsolutePath());
 		    JOptionPane.showMessageDialog(this, "La funcionalidad abrir esta en construccion");
-		}
-		
+		}	
 	}
-	
 	private void guardar() {
 		JFileChooser fileChooser = new JFileChooser();
 		fileChooser.setDialogTitle("Specify a file to save");   
-		 
 		int userSelection = fileChooser.showSaveDialog(guardar);
-		 
 		if (userSelection == JFileChooser.APPROVE_OPTION) {
 		    File fileToSave = fileChooser.getSelectedFile();
-//		    System.out.println("Save as file: " + fileToSave.getAbsolutePath());
 		    JOptionPane.showMessageDialog(this, "La funcionalidad guardar esta en construccion");
 		}
 	}
-	
 	private void refresque() {
 		this.revalidate();
 	}
-	
 	public void grid() {
-		
 		boolean visible=false;
 		b = new JPanel();
-		b.setLayout(new GridLayout(3,3,10,10));
-
-			for (int row=0; row < m.length; row++)
-			{
-			    for (int col=0; col < m[row].length; col++)
-			    {
-			        int value = m[row][col];
-			        if(value==1) {
-			        	visible=true;
-			        	Ficha canica= new Ficha(Color.BLUE,visible,value); 
-			        	//canica.setBackground(Color.YELLOW);
-			        	b.add(canica);
-			        }
-			        else if (value==2)
-			        {
-			        	visible=false;
-			        	Ficha canica= new Ficha(Color.BLUE,visible,value); 
-			        	b.add(canica);
-			        }
-			        else if(value==0)
-			        {
-			        	visible=false;
-			        	Ficha canica= new Ficha(Color.BLUE,visible,value); 
-				        b.add(canica,BorderLayout.CENTER);
-			        }
-		this.add(b,BorderLayout.CENTER);
-			    }
+		elements = senku.getElements();
+		b.setLayout(new GridLayout(7,7,10,10));
+		for(Integer value: elements){
+			switch(value){
+				case 0:{ visible =false;}
+				case 1:{ visible = false;}
+				case 2:{visible = true;}
+				Ficha canica= new Ficha(Color.BLUE,visible,value); 
+	        	b.add(canica);
 			}
-			
+			this.add(b,BorderLayout.CENTER);
+		}    
 	}        
-	
 	public static void main(String[] args) {
 		SenkuGUI se= new SenkuGUI();
 		se.setVisible(true);
-	}
-	
-	}
+	}	
+}

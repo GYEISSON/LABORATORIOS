@@ -7,6 +7,7 @@ public class Senku {
 	private int height1,height2,width1,width2;
 	private int hMatriz,wMatriz,mid1,mid2;
 	private int[][] matriz;
+	private ArrayList<Integer> lis;
 	
 	public Senku() {
 		height1 =height2 = 7;
@@ -16,7 +17,7 @@ public class Senku {
 		matriz= new int[hMatriz][wMatriz];
 		mid1 = (wMatriz-width1)/2;
 		mid2= (hMatriz-width2)/2;
-		
+
 		for(int i=mid1; i<(mid1+width1);i++) {
 			for(int j=0;j<hMatriz;j++ ) {
 				matriz[i][j]=2;
@@ -52,7 +53,7 @@ public class Senku {
 			}
 		}
 	}
-	public boolean solve(){
+	public boolean isSolve(){
 		int cont2 =0;
 		for(int i = 0;i<hMatriz;i++) {
 			for(int j = 0; j<wMatriz;j++) {
@@ -60,5 +61,25 @@ public class Senku {
 			}
 		}
 		return (cont2==1)? true:false;
+	}
+
+	public ArrayList<Integer> getElements(){
+		lis = new ArrayList<Integer>();
+		for(int i =0;i<hMatriz;i++){
+			for(int j=0;j<wMatriz;j++){
+				lis.add(matriz[i][j]);
+			}
+		}
+		return lis;
+	}
+
+	public int getPos(int x, int y){
+		return matriz[x][y];
+	}
+	public int getRows(){
+		return hMatriz;
+	}
+	public int getCols(){
+		return wMatriz;
 	}
 }
