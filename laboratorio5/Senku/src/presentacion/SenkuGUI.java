@@ -131,6 +131,7 @@ public class SenkuGUI extends JFrame{
 			this.add(b,BorderLayout.CENTER);
 		}    
 	}        
+	
 	public static void main(String[] args) {
 		SenkuGUI se= new SenkuGUI();
 		se.setVisible(true);
