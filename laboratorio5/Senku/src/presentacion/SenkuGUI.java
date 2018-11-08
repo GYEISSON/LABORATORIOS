@@ -155,12 +155,7 @@ public class SenkuGUI extends JFrame{
 		repaint();
 	}
 	
-	private void actualizar(){
-		this.remove(b);
-		grid();
-		repaint();
-		revalidate();
-	}
+
 	public void mover(int x, int y){
 		System.out.println("vamo a movernos");
 		if(state){
@@ -170,7 +165,7 @@ public class SenkuGUI extends JFrame{
 			state = false;
 			System.out.println(s[0]+" "+s[1]+" "+t[0]+" "+t[1]+" ya movimos");
 			senku.printM();
-			actualizar();
+			refresque();
 		}
 		else{
 			pilaX.push(x);
