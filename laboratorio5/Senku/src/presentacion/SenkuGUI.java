@@ -111,7 +111,6 @@ public class SenkuGUI extends JFrame{
 	private void prepareElementosTablero() {
 		senku = new Senku();
 		grid();
-		repaint();
 		revalidate();
 	}
 	
@@ -150,9 +149,12 @@ public class SenkuGUI extends JFrame{
 	private void refresque() {
 		b.removeAll();
 		this.remove(b);
-		prepareElementosTablero();
+		//prepareElementosTablero();
+		grid();
 		this.revalidate();
+		repaint();
 	}
+	
 	private void actualizar(){
 		this.remove(b);
 		grid();
@@ -180,7 +182,6 @@ public class SenkuGUI extends JFrame{
 	{
 		boolean visible=false;
 		b = new JPanel();
-		
 		b.setLayout(new GridLayout(7,7,10,10));
 		for (int row=0; row < senku.getRows(); row++)
 			{
@@ -189,20 +190,20 @@ public class SenkuGUI extends JFrame{
 			        int value = senku.getPos(row,col);
 			        if(value==1) {
 			        	visible=false;
-			        	Ficha canica= new Ficha(Color.BLUE,visible,value,row,col,this); 
+			        	Ficha canica= new Ficha(colorC,visible,value,row,col,this); 
 			        	//canica.setBackground(Color.YELLOW);
 			        	b.add(canica);
 			        }
 			        else if (value==2)
 			        {
 			        	visible=true;
-			        	Ficha canica= new Ficha(Color.BLUE,visible,value,row,col,this); 
+			        	Ficha canica= new Ficha(colorC,visible,value,row,col,this); 
 			        	b.add(canica);
 			        }
 			        else if(value==0)
 			        {
 			        	visible=false;
-			        	Ficha canica= new Ficha(Color.BLUE,visible,value,row,col,this); 
+			        	Ficha canica= new Ficha( colorC,visible,value,row,col,this); 
 				        b.add(canica,BorderLayout.CENTER);
 			        }
 				}
