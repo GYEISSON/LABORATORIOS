@@ -36,6 +36,7 @@ public class Senku {
 		if(matriz[t[0]][t[1]] == 1 && matriz[s[0]][s[1]] ==2
 			&& ((s[0] == t[0] && (Math.abs(s[1]-t[1]) == 2)) 
 			|| (s[1] == t[1]  && (Math.abs(s[0]-t[0]) == 2)))) {
+			System.out.println("Si nos movemos en matriz");
 			if(s[0] == t[0]) {
 				if((s[1] > t[1] && matriz[s[0]][s[1]-1] == 2) || (s[1] < t[1] &&  matriz[s[0]][t[1]-1]==2)) {
 					matriz[s[0]][s[1]]=1;
@@ -51,6 +52,14 @@ public class Senku {
 					else matriz[t[0]-1][t[1]]=1;	
 				}
 			}
+		}
+	}
+	public void printM(){
+		for(int i=0; i<hMatriz;i++){
+			for(int j=0;j<wMatriz;j++){
+				System.out.print(" "+matriz[i][j]);
+			}
+			System.out.println("");
 		}
 	}
 	public boolean isSolve(){

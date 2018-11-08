@@ -21,11 +21,15 @@ public class SenkuGUI extends JFrame{
 	private Senku senku;
 	private ArrayList<Integer> elements;
 	private Color colorC;
-
-	//private int[][] m = {{0,0,1,1,1,0,0},{0,0,1,1,1,0,0},{1,1,1,1,1,1,1},{1,1,1,2,1,1,1},{1,1,1,1,1,1,1},{0,0,1,1,1,0,0},{0,0,1,1,1,0,0}};
+	private Stack<Integer> pilaX,pilaY;
+	private boolean state;
+	
 
 	public SenkuGUI(){
 		super("Senku"); 
+		pilaX =  new Stack<Integer>();
+		pilaY =  new Stack<Integer>();
+		state = false;
 		colorC=Color.BLUE;
 		prepareElementos();
 		prepareElementosMenu();
@@ -147,23 +151,64 @@ public class SenkuGUI extends JFrame{
 		prepareElementosTablero();
 		this.revalidate();
 	}
-	
-	public void grid() {
+	private void actualizar(){
+		this.remove(b);
+		grid();
+		repaint();
+		revalidate();
+	}
+	public void mover(int x, int y){
+		System.out.println("vamo a movernos");
+		if(state){
+			int[] s = {pilaX.pop(),pilaY.pop()};
+			int[] t = {x,y};
+			senku.moveTo(s,t);
+			state = false;
+			System.out.println(s[0]+" "+s[1]+" "+t[0]+" "+t[1]+" ya movimos");
+			senku.printM();
+			actualizar();
+		}
+		else{
+			pilaX.push(x);
+			pilaY.push(y);
+			state = true;
+		}
+	}
+	public void grid() 
+	{
 		boolean visible=false;
 		b = new JPanel();
-		elements = senku.getElements();
+		
 		b.setLayout(new GridLayout(7,7,10,10));
-		for(Integer value: elements){
-			switch(value){
-				case 0:{ visible =false;}
-				case 1:{ visible = false;}
-				case 2:{visible = true;}
-				Ficha canica= new Ficha(colorC,visible,value); 
-	        	b.add(canica);
+		for (int row=0; row < senku.getRows(); row++)
+			{
+			    for (int col=0; col < senku.getCols(); col++)
+			    {
+			        int value = senku.getPos(row,col);
+			        if(value==1) {
+			        	visible=false;
+			        	Ficha canica= new Ficha(Color.BLUE,visible,value,row,col,this); 
+			        	//canica.setBackground(Color.YELLOW);
+			        	b.add(canica);
+			        }
+			        else if (value==2)
+			        {
+			        	visible=true;
+			        	Ficha canica= new Ficha(Color.BLUE,visible,value,row,col,this); 
+			        	b.add(canica);
+			        }
+			        else if(value==0)
+			        {
+			        	visible=false;
+			        	Ficha canica= new Ficha(Color.BLUE,visible,value,row,col,this); 
+				        b.add(canica,BorderLayout.CENTER);
+			        }
+				}
 			}
-			this.add(b,BorderLayout.CENTER);
-		}    
-	}        
+			
+		this.add(b,BorderLayout.CENTER);
+	}
+	
 	
 	public static void main(String[] args) {
 		SenkuGUI se= new SenkuGUI();
