@@ -12,18 +12,20 @@ public class SenkuGUI extends JFrame{
 	private JMenuBar menuBar;
 	private JMenu menu;
 	private JMenu menu2;
-	private JMenuItem nuevo;
+	private JMenu nuevo;
 	private JMenuItem abrir;
 	private JMenuItem guardar;
 	private JMenuItem salir;
 	private JMenuItem escogerColor;
+	private JTextField height,width;
 	private JPanel b;
 	private Senku senku;
 	private ArrayList<Integer> elements;
 	private Color colorC;
 	private Stack<Integer> pilaX,pilaY;
 	private boolean state;
-	
+	private int defectH=7,defectW=3;
+	private JButton b7;
 
 	public SenkuGUI(){
 		super("Senku"); 
@@ -41,26 +43,27 @@ public class SenkuGUI extends JFrame{
 	private void prepareElementosMenu(){
 		menuBar = new JMenuBar();
 		menu = new JMenu("Menu");
-		nuevo = new JMenuItem("Nuevo");
+		nuevo = new JMenu("Nuevo");
 		abrir = new JMenuItem("Abrir");
 		guardar = new JMenuItem("Guardar");
 		salir = new JMenuItem("Salir");
+		height = new JTextField(); 
+		width = new JTextField();
 		menu.add(nuevo);
 		menu.add(abrir);
 		menu.add(guardar);
 		menu.add(salir);
-	
 		menuBar.add(menu);
-		
 		menu2 = new JMenu("Visual");
-		
 		escogerColor = new JMenuItem("Escoja un Color");
 		menu2.add(escogerColor);
-		
 		menuBar.add(menu2);
-		
 		setJMenuBar(menuBar);
-		
+		b7  = new JButton("Aceptar");
+		height.setBounds(120,18,90,30);
+		nuevo.add(height);
+		nuevo.add(width);
+		nuevo.add(b7);
 		
 	}
 	
@@ -69,6 +72,7 @@ public class SenkuGUI extends JFrame{
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		setSize(screenSize.width/2, screenSize.height/2);
 		setLocationRelativeTo(null);
+		
 	}
 	
 	private void prepareAcciones(){
@@ -80,7 +84,11 @@ public class SenkuGUI extends JFrame{
 				salga();
 			}
 		});
-		
+		b7.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				nuevo();
+			}
+		});
 		abrir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				abrir();
@@ -109,9 +117,29 @@ public class SenkuGUI extends JFrame{
 	}	
  
 	private void prepareElementosTablero() {
-		senku = new Senku();
+		senku = new Senku(defectH,defectW);
 		grid();
 		revalidate();
+	}
+	
+	private void nuevo(){
+		int solicitadoH = Integer.parseInt(height.getText());
+		int solicitadoW = Integer.parseInt(width.getText());
+		if(solicitadoH>1 && solicitadoW>1 && solicitadoH> solicitadoW ){
+			defectH = solicitadoH;
+			defectW = solicitadoW;
+			this.remove(b);
+			prepareElementos();
+			prepareElementosMenu();
+			prepareAcciones();
+			prepareElementosTablero();
+			refresque();
+			repaint();
+
+		}
+		else{
+			JOptionPane.showMessageDialog(null,"cambie el numero de canicas");
+		}
 	}
 	
 	private void chooseColor() {
@@ -177,7 +205,7 @@ public class SenkuGUI extends JFrame{
 	{
 		boolean visible=false;
 		b = new JPanel();
-		b.setLayout(new GridLayout(7,7,10,10));
+		b.setLayout(new GridLayout(defectH,defectH,10,10));
 		for (int row=0; row < senku.getRows(); row++)
 			{
 			    for (int col=0; col < senku.getCols(); col++)
@@ -209,6 +237,7 @@ public class SenkuGUI extends JFrame{
 	
 	
 	public static void main(String[] args) {
+
 		SenkuGUI se= new SenkuGUI();
 		se.setVisible(true);
 	}	

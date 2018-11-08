@@ -9,9 +9,9 @@ public class Senku {
 	private int[][] matriz;
 	private ArrayList < Integer >  lis;
 	
-	public Senku() {
-		height1 = height2 = 7;
-		width1 = width2 = 3;
+	public Senku(int h,int w) {
+		height1 = height2 = h;
+		width1 = width2 = w;
 		hMatriz = Math.max(height1,width1);
 		wMatriz = Math.max(height2,width2);
 		matriz= new int[hMatriz][wMatriz];
@@ -30,6 +30,7 @@ public class Senku {
 		}
 		matriz[hMatriz/2][wMatriz/2] = 1;
 	}
+	
 
 	public void moveTo(int[] s,int[] t){
 		//s = source ,t = target
