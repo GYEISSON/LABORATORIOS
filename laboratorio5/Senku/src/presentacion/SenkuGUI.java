@@ -111,6 +111,8 @@ public class SenkuGUI extends JFrame{
 	private void prepareElementosTablero() {
 		senku = new Senku();
 		grid();
+		repaint();
+		revalidate();
 	}
 	
 	private void chooseColor() {
