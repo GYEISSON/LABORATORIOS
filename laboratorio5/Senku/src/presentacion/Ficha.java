@@ -35,4 +35,6 @@ class Ficha extends JPanel {
 			this.setBackground(Color.BLACK);
 		}
 	}
+
+	public int getNum(){return 8;}
 }

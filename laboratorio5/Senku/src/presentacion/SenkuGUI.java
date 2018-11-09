@@ -29,9 +29,8 @@ public class SenkuGUI extends JFrame{
 		colorC=Color.BLUE;
 		prepareElementos();
 		prepareElementosMenu();
-		prepareAcciones();
 		prepareElementosTablero();
-		
+		prepareAcciones();
 	}
 	
 	private void prepareElementosMenu(){
@@ -49,6 +48,7 @@ public class SenkuGUI extends JFrame{
 		menuBar.add(menu);
 		
 		menu2 = new JMenu("Visual");
+
 		
 		escogerColor = new JMenuItem("Escoja un Color");
 		menu2.add(escogerColor);
@@ -65,12 +65,11 @@ public class SenkuGUI extends JFrame{
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		setSize(screenSize.width/2, screenSize.height/2);
 		setLocationRelativeTo(null);
+
 	}
 	
 	private void prepareAcciones(){
-		
 		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE );
-		
 		addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) { 
 				salga();
@@ -101,12 +100,49 @@ public class SenkuGUI extends JFrame{
 				chooseColor();
 			}
 		});
+
+		b.addMouseListener(new MouseListener() {
+			public void mouseClicked(MouseEvent e){
+				int x = e.getX();
+				int y = e.getY();
+				printPos(x,y);
+				JPanel canica = (JPanel) b.getComponentAt(x);
+				//System.out.println(canica.getNum());
+			}
+			public void mouseExited(MouseEvent e){
+				int x = e.getX();
+				int y = e.getY();
+				//printPos(x,y);	
+			}
+
+			public void mouseReleased(MouseEvent e){
+				int x = e.getX();
+				int y = e.getY();
+				//printPos(x,y);
+			}
+			public void mousePressed(MouseEvent e){
+				int x = e.getX();
+				int y = e.getY();
+				//printPos(x,y);	
+			}
+			public void mouseEntered(MouseEvent e){
+				int x = e.getX();
+				int y = e.getY();
+				Ficha canica = (Ficha) getComponentAt(x,y);
 				
+				//printPos(x,y);	
+			}
+		});		
 	}	
  
 	private void prepareElementosTablero() {
 		senku = new Senku();
+		b = new JPanel();
 		grid();
+	}
+
+	private void printPos(int x, int y){
+		System.out.println(x+" "+y);
 	}
 	
 	private void chooseColor() {
@@ -150,7 +186,7 @@ public class SenkuGUI extends JFrame{
 	
 	public void grid() {
 		boolean visible=false;
-		b = new JPanel();
+		
 		elements = senku.getElements();
 		b.setLayout(new GridLayout(7,7,10,10));
 		for(Integer value: elements){
