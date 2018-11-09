@@ -24,17 +24,36 @@ class Ficha extends JPanel {
 	} 
 	public void prepareAcciones(){
 		this.addMouseListener(new MouseAdapter(){
+			
 			public  void mouseClicked(MouseEvent e){
 				oprimir();
 			}
+			/*
+			public void mousePressed(MouseEvent e){
+				preSel();
+			}
+			public void mouseReleased(MouseEvent e){
+				endSel();
+			}
+			*/
 		});
 	}
 	
 	private void oprimir(){
-		gui.mover(x,y);
+		if(value==2 || value==1){
+			gui.mover(x,y);	
+		}
+		
+	} 
+	private void preSel(){
+		this.color = Color.WHITE;
+		gui.preMove(x,y);
+	}
+
+	private void endSel(){
+		gui.toMove(x,y);
 	}
  	
-	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		int h=this.getHeight();
@@ -51,5 +70,4 @@ class Ficha extends JPanel {
 		}
 	}
 
-	public int getNum(){return 8;}
 }

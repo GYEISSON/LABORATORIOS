@@ -54,11 +54,6 @@ public class SenkuGUI extends JFrame{
 		menu.add(salir);
 		menuBar.add(menu);
 		menu2 = new JMenu("Visual");
-<<<<<<< HEAD
-
-		
-=======
->>>>>>> 4a16e1679f3285bc7f3c3e117fc0f0ab1e3f2e49
 		escogerColor = new JMenuItem("Escoja un Color");
 		menu2.add(escogerColor);
 		menuBar.add(menu2);
@@ -76,11 +71,6 @@ public class SenkuGUI extends JFrame{
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		setSize(screenSize.width/2, screenSize.height/2);
 		setLocationRelativeTo(null);
-<<<<<<< HEAD
-
-=======
-		
->>>>>>> 4a16e1679f3285bc7f3c3e117fc0f0ab1e3f2e49
 	}
 	
 	private void prepareAcciones(){
@@ -120,47 +110,11 @@ public class SenkuGUI extends JFrame{
 			}
 		});
 
-		b.addMouseListener(new MouseListener() {
-			public void mouseClicked(MouseEvent e){
-				int x = e.getX();
-				int y = e.getY();
-				printPos(x,y);
-				JPanel canica = (JPanel) b.getComponentAt(x);
-				//System.out.println(canica.getNum());
-			}
-			public void mouseExited(MouseEvent e){
-				int x = e.getX();
-				int y = e.getY();
-				//printPos(x,y);	
-			}
-
-			public void mouseReleased(MouseEvent e){
-				int x = e.getX();
-				int y = e.getY();
-				//printPos(x,y);
-			}
-			public void mousePressed(MouseEvent e){
-				int x = e.getX();
-				int y = e.getY();
-				//printPos(x,y);	
-			}
-			public void mouseEntered(MouseEvent e){
-				int x = e.getX();
-				int y = e.getY();
-				Ficha canica = (Ficha) getComponentAt(x,y);
-				
-				//printPos(x,y);	
-			}
-		});		
 	}	
  
 	private void prepareElementosTablero() {
-<<<<<<< HEAD
-		senku = new Senku();
-		b = new JPanel();
-=======
 		senku = new Senku(defectH,defectW);
->>>>>>> 4a16e1679f3285bc7f3c3e117fc0f0ab1e3f2e49
+
 		grid();
 		revalidate();
 	}
@@ -230,9 +184,20 @@ public class SenkuGUI extends JFrame{
 		repaint();
 	}
 	
+	public void preMove(int x,int y){
+		pilaX.push(x);
+		pilaY.push(y);
+		refresque();
+	}
+	public void toMove(int x, int y){
+		int[] s = {pilaX.peek(),pilaY.peek()};
+		int[] t = {x,y};
+		senku.moveTo(s,t);
+		refresque();
+	}
 
 	public void mover(int x, int y){
-		System.out.println("vamo a movernos");
+		System.out.println("vamo a movernos"+state);
 		if(state){
 			int[] s = {pilaX.pop(),pilaY.pop()};
 			int[] t = {x,y};
@@ -251,18 +216,6 @@ public class SenkuGUI extends JFrame{
 	public void grid() 
 	{
 		boolean visible=false;
-<<<<<<< HEAD
-		
-		elements = senku.getElements();
-		b.setLayout(new GridLayout(7,7,10,10));
-		for(Integer value: elements){
-			switch(value){
-				case 0:{ visible =false;}
-				case 1:{ visible = false;}
-				case 2:{visible = true;}
-				Ficha canica= new Ficha(colorC,visible,value); 
-	        	b.add(canica);
-=======
 		b = new JPanel();
 		b.setLayout(new GridLayout(defectH,defectH,10,10));
 		for (int row=0; row < senku.getRows(); row++)
@@ -289,7 +242,6 @@ public class SenkuGUI extends JFrame{
 				        b.add(canica,BorderLayout.CENTER);
 			        }
 				}
->>>>>>> 4a16e1679f3285bc7f3c3e117fc0f0ab1e3f2e49
 			}
 			
 		this.add(b,BorderLayout.CENTER);
