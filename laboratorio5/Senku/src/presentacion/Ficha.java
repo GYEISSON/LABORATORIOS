@@ -42,6 +42,7 @@ class Ficha extends JPanel {
 	private void oprimir(){
 		if(value==2 || value==1){
 			gui.mover(x,y);	
+			this.color = Color.WHITE;
 		}
 		
 	} 

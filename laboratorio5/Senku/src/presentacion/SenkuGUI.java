@@ -219,13 +219,13 @@ public class SenkuGUI extends JFrame{
 			int[] t = {x,y};
 			senku.moveTo(s,t);
 			state = false;
-
 			refresque();
 		}
 		else{
 			pilaX.push(x);
 			pilaY.push(y);
 			state = true;
+			refresque();
 		}
 	}
 	public void grid() 
@@ -238,6 +238,14 @@ public class SenkuGUI extends JFrame{
 			    for (int col=0; col < senku.getCols(); col++)
 			    {
 			        int value = senku.getPos(row,col);
+					switch(value){
+						case 0: visible = false;
+						case 1: visible = false;
+						case 2: visible = true;
+						Ficha canica= new Ficha( colorC,visible,value,row,col,this); 
+				        b.add(canica,BorderLayout.CENTER);	
+					}
+					/*
 			        if(value==1) {
 			        	visible=false;
 			        	Ficha canica= new Ficha(colorC,visible,value,row,col,this); 
@@ -253,9 +261,9 @@ public class SenkuGUI extends JFrame{
 			        else if(value==0)
 			        {
 			        	visible=false;
-			        	Ficha canica= new Ficha( colorC,visible,value,row,col,this); 
-				        b.add(canica,BorderLayout.CENTER);
+			        	
 			        }
+					*/
 				}
 			}
 			
