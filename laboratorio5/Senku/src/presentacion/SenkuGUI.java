@@ -2,6 +2,7 @@ package presentacion;
 import aplicacion.Senku;
 
 import javax.swing.*;
+import javax.swing.JFrame;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.geom.*;
@@ -25,7 +26,8 @@ public class SenkuGUI extends JFrame{
 	private Stack<Integer> pilaX,pilaY;
 	private boolean state;
 	private int defectH=7,defectW=3;
-	private JButton b7;
+	private JButton aceptar;
+	private JButton reinicio;
 
 	public SenkuGUI(){
 		super("Senku"); 
@@ -58,21 +60,21 @@ public class SenkuGUI extends JFrame{
 		menu2.add(escogerColor);
 		menuBar.add(menu2);
 		setJMenuBar(menuBar);
-		b7  = new JButton("Aceptar");
+		aceptar  = new JButton("Aceptar");
 		height.setBounds(120,18,90,30);
 		nuevo.add(height);
 		nuevo.add(width);
-		nuevo.add(b7);
-		
+		nuevo.add(aceptar);
 	}
 	
-	private void prepareElementos() {
-		
+	private void prepareElementos(){
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		setSize(screenSize.width/2, screenSize.height/2);
 		setLocationRelativeTo(null);
+		reinicio = new JButton("Reiniciar :)");
+		this.getContentPane().setLayout(new BorderLayout());
+		this.getContentPane().add(reinicio,BorderLayout.SOUTH);
 	}
-	
 	private void prepareAcciones(){
 		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE );
 		addWindowListener(new WindowAdapter() {
@@ -80,7 +82,7 @@ public class SenkuGUI extends JFrame{
 				salga();
 			}
 		});
-		b7.addActionListener(new ActionListener(){
+		aceptar.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				nuevo();
 			}
@@ -109,23 +111,39 @@ public class SenkuGUI extends JFrame{
 				chooseColor();
 			}
 		});
-
+		reinicio.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				reiniciar();
+			}
+		});
 	}	
  
 	private void prepareElementosTablero() {
 		senku = new Senku(defectH,defectW);
-
 		grid();
 		revalidate();
 	}
-	
+	private void reiniciar(){
+		b.removeAll();
+		this.remove(b);
+		this.remove(reinicio); 
+		pilaX =  new Stack<Integer>();
+		pilaY =  new Stack<Integer>();
+		state = false;
+		prepareElementos();
+		prepareElementosMenu();
+		prepareElementosTablero();
+		prepareAcciones();
+	}
 	private void nuevo(){
 		int solicitadoH = Integer.parseInt(height.getText());
 		int solicitadoW = Integer.parseInt(width.getText());
 		if(solicitadoH>1 && solicitadoW>1 && solicitadoH> solicitadoW ){
 			defectH = solicitadoH;
 			defectW = solicitadoW;
+			b.removeAll();
 			this.remove(b);
+			this.remove(reinicio);
 			prepareElementos();
 			prepareElementosMenu();
 			prepareAcciones();
@@ -139,9 +157,7 @@ public class SenkuGUI extends JFrame{
 		}
 	}
 
-	private void printPos(int x, int y){
-		System.out.println(x+" "+y);
-	}
+
 	
 	private void chooseColor() {
 		colorC = JColorChooser.showDialog(null, "Choose a color",Color.BLUE);
@@ -160,7 +176,7 @@ public class SenkuGUI extends JFrame{
 		int result = file.showOpenDialog(this);
 		if (result == JFileChooser.APPROVE_OPTION) {
 		    File selectedFile = file.getSelectedFile();
-		    //System.out.println("Selected file: " + selectedFile.getAbsolutePath());
+
 		    JOptionPane.showMessageDialog(this, "La funcionalidad abrir esta en construccion");
 		}	
 	}
@@ -197,7 +213,7 @@ public class SenkuGUI extends JFrame{
 	}
 
 	public void mover(int x, int y){
-		System.out.println("vamo a movernos "+state);
+
 		if(state){
 			int[] s = {pilaX.pop(),pilaY.pop()};
 			int[] t = {x,y};

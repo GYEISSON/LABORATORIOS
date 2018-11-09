@@ -38,7 +38,7 @@ public class Senku {
 			&& ((s[0] == t[0] && (Math.abs(s[1]-t[1]) == 2)) 
 			|| (s[1] == t[1]  && (Math.abs(s[0]-t[0]) == 2)))) {
 				
-			System.out.println("Si nos movemos en matriz");
+			
 			if(s[0] == t[0]) {
 				if((s[1] > t[1] && matriz[s[0]][s[1]-1] == 2) || (s[1] < t[1] &&  matriz[s[0]][t[1]-1]==2)) {
 					matriz[s[0]][s[1]]=1;
