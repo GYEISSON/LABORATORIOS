@@ -178,7 +178,7 @@ public class SenkuGUI extends JFrame{
 	private void refresque() {
 		b.removeAll();
 		this.remove(b);
-		//prepareElementosTablero();
+		
 		grid();
 		this.revalidate();
 		repaint();
@@ -197,14 +197,13 @@ public class SenkuGUI extends JFrame{
 	}
 
 	public void mover(int x, int y){
-		System.out.println("vamo a movernos"+state);
+		System.out.println("vamo a movernos "+state);
 		if(state){
 			int[] s = {pilaX.pop(),pilaY.pop()};
 			int[] t = {x,y};
 			senku.moveTo(s,t);
 			state = false;
-			System.out.println(s[0]+" "+s[1]+" "+t[0]+" "+t[1]+" ya movimos");
-			senku.printM();
+
 			refresque();
 		}
 		else{
