@@ -17,12 +17,11 @@ import java.util.*;
 public class AutomataGUI extends JFrame{    
 
     private JButton botonReloj;
-    
     private JMenuBar menuBar;
 	private JMenu menu;
 	private JMenuItem abrir;
 	private JMenuItem iniciar;
-	private JMenuItem guardarb;
+	private JMenuItem opcionGuardarb;
 	private JMenuItem salir;
 	private JMenuItem importe;
 	private JMenuItem exporte;
@@ -45,12 +44,13 @@ public class AutomataGUI extends JFrame{
         prepareAccionesMenu();
 
     }
+    
     private void prepareElementosMenu() {
     	menuBar = new JMenuBar();
 		menu = new JMenu("Menu");
 		iniciar = new JMenuItem("Iniciar");
 		abrir = new JMenuItem("Abrir");
-		guardarb = new JMenuItem("Guardar");
+		opcionGuardarb = new JMenuItem("opcionGuardar");
 		salir = new JMenuItem("Salir");
 		reinicio = new JMenuItem("Reinicio :)");
 		importe = new JMenuItem("Importar");
@@ -58,7 +58,7 @@ public class AutomataGUI extends JFrame{
     	
     	menu.add(iniciar);
 		menu.add(abrir);
-		menu.add(guardarb);
+		menu.add(opcionGuardarb);
 		menu.add(salir);
 		menu.add(reinicio);
 		menu.add(importe);
@@ -68,7 +68,6 @@ public class AutomataGUI extends JFrame{
 		
     }
 
-    
     private void prepareElementos() {
     	setResizable(false);
 
@@ -80,7 +79,7 @@ public class AutomataGUI extends JFrame{
 
         foto.repaint();
     }
-
+    
     private void prepareAcciones(){
         botonReloj.addActionListener(
             new ActionListener(){
@@ -103,15 +102,16 @@ public class AutomataGUI extends JFrame{
 				opcionIniciar();
 			}
 		});
+		
 		abrir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				abrir();
 			}
 		});
 				
-		guardarb.addActionListener(new ActionListener() {
+		opcionGuardarb.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				guardar();
+				opcionGuardar();
 			}
 		});
 	
@@ -120,13 +120,10 @@ public class AutomataGUI extends JFrame{
 				opcionSalir();
 			}
 		}); 
+		
 		reinicio.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-//			automata=new AutomataCelular();
-//	        new AutomataGUI(automata);
-//	        ca.setVisible(true);
-			dispose();
-			new AutomataGUI(automata);
+				reiniciar();
 			}
 		});
     }
@@ -137,27 +134,37 @@ public class AutomataGUI extends JFrame{
     }
     
     private void reiniciar(){
-    	automata.opcionIniciar();
-    	this.remove(foto);
-    	foto = new FotoAutomata(this);
-    	this.add(foto)
-//		foto=null;
-//		ca = new AutomataGUI(automata);
-//		this.remove(b);
-//		this.remove(reinicio); 
-//		prepareElementos();
-//        prepareAcciones();
-//        prepareElementosMenu();
-//        prepareAccionesMenu();
-//	ca.revalidate();
-//	ca.repaint();
+    	revalidate();
+    	repaint();
+    	getContentPane().removeAll();
+    	foto.removeAll();
+    	
+    	revalidate();
+    	repaint();
+    	automata=new AutomataCelular();
+    	foto=new FotoAutomata(automata);
+    	revalidate();
+    	repaint();
+    	getContentPane().setLayout(new BorderLayout());
+    	getContentPane().add(foto,BorderLayout.NORTH);
+    	getContentPane().add(botonReloj,BorderLayout.SOUTH);
+    	revalidate();
+    	repaint();
 	}
+      
     private void opcionSalir(){
 //	       int c = JOptionPane.showConfirmDialog(null,"Desea salir?","EXIT",JOptionPane.YES_NO_OPTION);
 //	       if (JOptionPane.YES_OPTION == c) {
 	   	   System.exit(1);
 //	       }
 	}
+    
+    private void opcionIniciar() {
+    	automata=new AutomataCelular();
+    	foto=new FotoAutomata(automata);
+    	AutomataGUI a=new AutomataGUI(automata);
+    	a.setVisible(true);
+    }
 
 	private void abrir() {
 		JFileChooser file = new JFileChooser();
@@ -169,16 +176,46 @@ public class AutomataGUI extends JFrame{
 		}	
 	}
 	
-	private void guardar() {
-		JFileChooser fileChooser = new JFileChooser();
-		fileChooser.setDialogTitle("Specify a file to save");   
-		int userSelection = fileChooser.showSaveDialog(guardarb);
-		if (userSelection == JFileChooser.APPROVE_OPTION) {
-		    File fileToSave = fileChooser.getSelectedFile();
-		    JOptionPane.showMessageDialog(this, "La funcionalidad guardar esta en construccion");
-		}
-	}
-	 public static void main(String[] args) {
+	private void opcionGuardar() {
+//		private void guardarArchivo() {
+		FileOutputStream filets = automata.salve();
+			 try
+			 {
+			  String nombre="";
+			  JFileChooser file=new JFileChooser();
+			  file.showSaveDialog(this);
+			  File guarda =file.getSelectedFile();
+			 
+			  if(guarda !=null)
+			  {
+			   /*guardamos el archivo y le damos el formato directamente,
+			    * si queremos que se guarde en formato doc lo definimos como .doc*/
+			    FileWriter  save=new FileWriter(guarda+".dat");
+			    save.write(filets.getText());
+			    save.close();
+			    JOptionPane.showMessageDialog(null,
+			         "El archivo se a guardado Exitosamente",
+			             "Información",JOptionPane.INFORMATION_MESSAGE);
+			    }
+			 }
+			  catch(IOException ex)
+			  {
+			   JOptionPane.showMessageDialog(null,
+			        "Su archivo no se ha guardado",
+			           "Advertencia",JOptionPane.WARNING_MESSAGE);
+			  }
+			 }
+//			}
+//		JFileChooser fileChooser = new JFileChooser();
+//		fileChooser.setDialogTitle("Specify a file to save");   
+//		int userSelection = fileChooser.showSaveDialog(opcionGuardarb);
+//		if (userSelection == JFileChooser.APPROVE_OPTION) {
+//		    File fileToSave = fileChooser.getSelectedFile();
+//		    JOptionPane.showMessageDialog(this, "La funcionalidad Guardar esta en construccion");
+//		}
+//	}
+	
+	public static void main(String[] args) {
 	        automata=new AutomataCelular();
 	        ca=new AutomataGUI(automata);
 	        ca.setVisible(true);

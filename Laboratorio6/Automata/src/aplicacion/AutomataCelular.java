@@ -1,8 +1,10 @@
 package aplicacion;
 import java.util.*;
 import java.*;
+import java.io.*;
 
 public class AutomataCelular{
+	private static final long serialVersionUID = 1L;
     static private int LONGITUD=20;
     private Elemento[][] automata;
     private int nTictac;
@@ -17,6 +19,7 @@ public class AutomataCelular{
         algunosElementos();
         nTictac=0;
     }
+    
     public void opcionIniciar() {
         automata=new Elemento[LONGITUD][LONGITUD];
         for (int f=0;f<LONGITUD;f++){
@@ -27,6 +30,7 @@ public class AutomataCelular{
         algunosElementos();
         nTictac=0;
     }
+    
     public Elemento[][] getM(){
         return automata;
     }
@@ -71,6 +75,7 @@ public class AutomataCelular{
         Conway cinco= new Conway(this,10,5);
         
     }
+    
     public int nVecinos(int fila,int columna){
         int[] x = {0, -1, -1, -1, 0, 1, 1, 1};
         int[] y = {-1,-1,  0,  1, 1, 1, 0, -1};
@@ -96,6 +101,31 @@ public class AutomataCelular{
             dosFor("cambie");
         }
         nTictac++;
+    }
+    
+    public FileOutputStream salve() {
+    	try {
+    	    Elemento[][] elementos = getM();
+
+    	    //Write Elements array to file.
+    	    FileOutputStream fos = new FileOutputStream("elementos.dat");
+    	    ObjectOutputStream oos = new ObjectOutputStream(fos);
+    	    oos.writeObject(elementos);
+    	    oos.close();
+    	    return fos;
+//    	    //Read Element array from file.
+//    	    FileInputStream fis = new FileInputStream("elementos.ser");
+//    	    ObjectInputStream ois = new ObjectInputStream(fis);
+//    	    Elemento[][] elementosFromSavedFile = (Elemento[][]) ois.readObject();
+//    	    ois.close();
+    	}
+    	catch (FileNotFoundException e) {
+    	    e.printStackTrace();
+    	}
+    	catch (IOException e) {
+    	    e.printStackTrace();
+    	}
+		return null;
     }
     
     /**

@@ -2,7 +2,8 @@ package aplicacion;
 
 
 import java.awt.*;
-public class Manzana implements Elemento{
+import java.io.Serializable;
+public class Manzana implements Elemento,Serializable{
     private AutomataCelular automata;
     private int fila,columna;
     protected Color color;

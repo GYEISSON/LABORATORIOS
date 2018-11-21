@@ -1,6 +1,7 @@
 package aplicacion;
 
 import java.awt.Color;
+import java.io.Serializable;
 
 /**
  * Write a description of class Izquierdosa here.
@@ -8,7 +9,7 @@ import java.awt.Color;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Izquierdosa extends Celula
+public class Izquierdosa extends Celula implements Serializable
 {
     public Izquierdosa(AutomataCelular ac,int fila, int columna){
         super(ac,fila,columna);

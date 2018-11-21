@@ -1,7 +1,10 @@
 package aplicacion;
 
 import java.awt.*;
-public class Barrera implements Elemento{
+import java.io.Serializable;
+
+
+public class Barrera implements Elemento,Serializable {
     private AutomataCelular automata;
     private int fila,columna;
     protected Color color;
