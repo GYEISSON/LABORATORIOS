@@ -3,7 +3,7 @@ import java.util.*;
 import java.*;
 import java.io.*;
 
-public class AutomataCelular{
+public class AutomataCelular implements Serializable{
 	private static final long serialVersionUID = 1L;
     static private int LONGITUD=20;
     private Elemento[][] automata;
@@ -33,6 +33,10 @@ public class AutomataCelular{
     
     public Elemento[][] getM(){
         return automata;
+    }
+    private int[] listar() {
+    	int[] lista = {1,2,3,4,5};
+    	return lista;
     }
     
     public int  getLongitud(){
@@ -105,13 +109,16 @@ public class AutomataCelular{
     
     public FileOutputStream salve() {
     	try {
+    		
     	    Elemento[][] elementos = getM();
-
+    		//int[] elementos = listar();
     	    //Write Elements array to file.
     	    FileOutputStream fos = new FileOutputStream("elementos.dat");
     	    ObjectOutputStream oos = new ObjectOutputStream(fos);
+    	    oos.writeObject("Hola mundo");
     	    oos.writeObject(elementos);
     	    oos.close();
+    	    System.out.println("ok file and object outputStream");
     	    return fos;
 //    	    //Read Element array from file.
 //    	    FileInputStream fis = new FileInputStream("elementos.ser");

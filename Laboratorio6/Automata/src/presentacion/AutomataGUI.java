@@ -177,14 +177,16 @@ public class AutomataGUI extends JFrame{
 	}
 	
 	private void opcionGuardar() {
+		System.out.println("opcion Guardar!");
+		
 //		private void guardarArchivo() {
-		FileOutputStream filets = automata.salve();
+		FileOutputStream filets = automata.salve(); 
 			 try
 			 {
 			  String nombre="";
 			  JFileChooser file=new JFileChooser();
 			  file.showSaveDialog(this);
-			  File guarda =file.getSelectedFile();
+			  File guarda = file.getSelectedFile();
 			 
 			  if(guarda !=null)
 			  {
@@ -204,7 +206,8 @@ public class AutomataGUI extends JFrame{
 			        "Su archivo no se ha guardado",
 			           "Advertencia",JOptionPane.WARNING_MESSAGE);
 			  }
-			 }
+			  
+	}
 //			}
 //		JFileChooser fileChooser = new JFileChooser();
 //		fileChooser.setDialogTitle("Specify a file to save");   

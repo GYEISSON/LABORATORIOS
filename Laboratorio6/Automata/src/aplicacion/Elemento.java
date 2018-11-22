@@ -1,7 +1,8 @@
 package aplicacion;
 import java.awt.Color;
+import java.io.Serializable;
 
-public interface Elemento{
+public interface Elemento extends Serializable{
     
   void decida();
   void cambie();
