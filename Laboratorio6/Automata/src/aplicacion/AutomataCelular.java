@@ -107,13 +107,11 @@ public class AutomataCelular implements Serializable{
         nTictac++;
     }
     
-    public FileOutputStream salve() {
+    public FileOutputStream salve(String d) {
     	try {
     		
     	    Elemento[][] elementos = getM();
-    		//int[] elementos = listar();
-    	    //Write Elements array to file.
-    	    FileOutputStream fos = new FileOutputStream("elementos.dat");
+    	    FileOutputStream fos = new FileOutputStream(d);
     	    ObjectOutputStream oos = new ObjectOutputStream(fos);
     	    oos.writeObject("Hola mundo");
     	    oos.writeObject(elementos);
@@ -121,7 +119,7 @@ public class AutomataCelular implements Serializable{
     	    System.out.println("ok file and object outputStream");
     	    return fos;
 //    	    //Read Element array from file.
-//    	    FileInputStream fis = new FileInputStream("elementos.ser");
+//    	    FileInputStream fis = new FileInputStream("elementos.dat");
 //    	    ObjectInputStream ois = new ObjectInputStream(fis);
 //    	    Elemento[][] elementosFromSavedFile = (Elemento[][]) ois.readObject();
 //    	    ois.close();

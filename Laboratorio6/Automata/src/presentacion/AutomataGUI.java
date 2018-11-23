@@ -177,46 +177,51 @@ public class AutomataGUI extends JFrame{
 	}
 	
 	private void opcionGuardar() {
-		System.out.println("opcion Guardar!");
 		
-//		private void guardarArchivo() {
-		FileOutputStream filets = automata.salve(); 
-			 try
-			 {
-			  String nombre="";
-			  JFileChooser file=new JFileChooser();
-			  file.showSaveDialog(this);
-			  File guarda = file.getSelectedFile();
-			 
-			  if(guarda !=null)
-			  {
-			   /*guardamos el archivo y le damos el formato directamente,
-			    * si queremos que se guarde en formato doc lo definimos como .doc*/
-			    FileWriter  save=new FileWriter(guarda+".dat");
-			    save.write(filets.getText());
-			    save.close();
-			    JOptionPane.showMessageDialog(null,
-			         "El archivo se a guardado Exitosamente",
-			             "Información",JOptionPane.INFORMATION_MESSAGE);
-			    }
-			 }
-			  catch(IOException ex)
-			  {
-			   JOptionPane.showMessageDialog(null,
-			        "Su archivo no se ha guardado",
-			           "Advertencia",JOptionPane.WARNING_MESSAGE);
-			  }
-			  
-	}
-//			}
-//		JFileChooser fileChooser = new JFileChooser();
-//		fileChooser.setDialogTitle("Specify a file to save");   
-//		int userSelection = fileChooser.showSaveDialog(opcionGuardarb);
-//		if (userSelection == JFileChooser.APPROVE_OPTION) {
-//		    File fileToSave = fileChooser.getSelectedFile();
-//		    JOptionPane.showMessageDialog(this, "La funcionalidad Guardar esta en construccion");
-//		}
+//		System.out.println("opcion Guardar!");
+//		File aa = new File("newfile.txt");
+////		private void guardarArchivo() {
+//		FileOutputStream filets = automata.salve(); 
+//			 try
+//			 {
+//			  String nombre="";
+//			  JFileChooser file=new JFileChooser();
+//			  file.showSaveDialog(this);
+//			  File guarda = file.getSelectedFile();
+//			 
+//			  if(guarda !=null)
+//			  {
+//			   /*guardamos el archivo y le damos el formato directamente,
+//			    * si queremos que se guarde en formato doc lo definimos como .doc*/
+//			    FileWriter  save=new FileWriter(guarda+".dat");
+//			    save.write(filets);
+//			    save.close();
+//			    JOptionPane.showMessageDialog(null,
+//			         "El archivo se a guardado Exitosamente",
+//			             "Informaciï¿½n",JOptionPane.INFORMATION_MESSAGE);
+//			    }
+//			 }
+//			  catch(IOException ex)
+//			  {
+//			   JOptionPane.showMessageDialog(null,
+//			        "Su archivo no se ha guardado",
+//			           "Advertencia",JOptionPane.WARNING_MESSAGE);
+//			  }
+//			  
 //	}
+//			}
+		JFileChooser fc = new JFileChooser();
+		fc.setDialogTitle("Specify a file to save");   
+		fc.setCurrentDirectory(new java.io.File("/src/aplicacion"));
+		fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+		
+		int userSelection = fc.showSaveDialog(opcionGuardarb);
+		if (userSelection == JFileChooser.APPROVE_OPTION) {
+		    String fileLocation = fc.getSelectedFile().getAbsolutePath();
+		    System.out.println(fileLocation);
+		    automata.salve(fileLocation);
+		}
+	}
 	
 	public static void main(String[] args) {
 	        automata=new AutomataCelular();
